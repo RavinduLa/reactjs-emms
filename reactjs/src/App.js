@@ -10,6 +10,7 @@ import Welcome from "./components/Welcome";
 import Footer from "./components/Footer";
 import Inventory from "./components/Inventory";
 import Header from "./components/Header";
+import AddInventory from "./components/AddInventory";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Switch>
             <Route path="/" exact component={Welcome} />
             <Route path="/inventory" exact component={Inventory} />
+            <Route path="/addInventory" exact component={AddInventory} />
         </Switch>
 
         {/*<Container>
