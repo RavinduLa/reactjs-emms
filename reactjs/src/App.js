@@ -9,12 +9,14 @@ import {Container, Row, Jumbotron, Col} from 'react-bootstrap';
 import Welcome from "./components/Welcome";
 import Footer from "./components/Footer";
 import Inventory from "./components/Inventory";
+import Header from "./components/Header";
 
 function App() {
 
   return (
     <Router >
 
+        <Header />
         <NavigationBar />
         <Switch>
             <Route path="/" exact component={Welcome} />

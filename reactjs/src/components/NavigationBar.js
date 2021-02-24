@@ -7,7 +7,7 @@ class NavigationBar extends React.Component{
 
     render() {
         return(
-            <Navbar bg='dark' variant='dark' >
+            <Navbar bg='warning' variant='light'>
 
                 <Link to={"/"} className={'navbar-brand'}>
                     EMMS
