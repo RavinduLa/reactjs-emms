@@ -1,55 +1,97 @@
 import React from "react";
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
+import axios from "axios";
+import InventoryAddedToast from "./InventoryAddedToast";
 
 class AddInventory extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state={
-            assetId: '',
-            serialNumber:'',
-            location:'',
-            brand:'',
-            model:'',
-            type:'',
-            purchaseDate:'',
-            warrantyMonths:''
-        }
+        this.state= this.initialState;
+        this.state.show = false;
         this.submitEquipment = this.submitEquipment.bind(this);
         this.equipmentChange = this.equipmentChange.bind(this);
     }
 
-    submitEquipment(event){
-        alert(
-            this.state.assetId+
-            this.state.serialNumber+
-            this.state.location+
-        this.state.brand+
-        this.state.model+
-        this.state.type+
-        this.state.purchaseDate+
-        this.state.warrantyMonths);
-        event.preventDefault();
+    initialState = {
+        assetId: '',
+        serialNumber:'',
+        location:'',
+        brand:'',
+        model:'',
+        type:'',
+        purchaseDate:'',
+        warrantyMonths:''
     }
 
-    equipmentChange(event){
+    submitEquipment = event => {
+        //alert()
+
+        event.preventDefault();
+
+        //creating a json object
+        const equipment = {
+            assetId: this.state.assetId,
+            serialNumber: this.state.serialNumber,
+            location: this.state.location,
+            brand: this.state.brand,
+            model: this.state.model,
+            type: this.state.type,
+            purchaseDate: this.state.purchaseDate,
+            warrantyMonths: this.state.warrantyMonths,
+        }
+        axios.post("http://localhost:8080/api/addEquipment",equipment)
+            .then(response =>{
+                if(response.data != null){
+                    this.setState({"show" : true})
+                    setTimeout(() => this.setState({"show" : false}),3000)
+                    //alert("Equipment added to the inventory succesfully")
+                }
+                else {
+                    this.setState({"show" : false})
+                }
+            }).catch( (reject) => {
+                alert("rejected: " +reject);
+        })
+        this.setState(this.initialState);
+    }
+
+    equipmentChange = event =>{
         this.setState({
             [event.target.name]:event.target.value
         });
 
     }
 
+    resetEquipment = () => {
+        this.setState( () => this.initialState);
+
+    }
+
+
+
     render() {
         const padding={
             padding:'20px'
         }
+
+        const {assetId,serialNumber,location,brand,model,type,purchaseDate,warrantyMonths} = this.state;
         return(
+
             <Container fluid>
                 <Col style={padding}>
+                    <div>
+                        <div style={{"display":this.state.show ? "block" :"none" }}>
+                            <InventoryAddedToast
+                                children={{show:this.state.show,
+                                    message:"Equipment added successfully"}}/>
+                        </div>
+                    </div>
                     <Card className={'border border-dark bg-light'}>
                         <Card.Header>Add Item to Inventory</Card.Header>
 
-                        <Form id={'addNewInventoryForm'} onSubmit={this.submitEquipment}>
+                        <Form onReset={this.resetEquipment} id={'addNewInventoryForm'}
+                              onSubmit={this.submitEquipment}>
                             <Card.Body>
                                 <Form.Row>
 
@@ -58,8 +100,11 @@ class AddInventory extends React.Component{
                                     <Form.Control required
                                         type="number"
                                         name={'assetId'}
-                                        placeHolder="Enter AssetID"
-                                        value={this.state.assetId}
+                                        placeholder="Enter AssetID"
+                                        //value={this.state.assetId}
+                                        //this was here earlier
+                                        // later removed .state
+                                        value={assetId}
                                         onChange={this.equipmentChange}
                                     />
                                 </Form.Group>
@@ -70,8 +115,8 @@ class AddInventory extends React.Component{
                                         required
                                         type="text"
                                         name={'serialNumber'}
-                                        placeHolder="Enter Serial Number"
-                                        value={this.state.serialNumber}
+                                        placeholder="Enter Serial Number"
+                                        value={serialNumber}
                                         onChange={this.equipmentChange}/>
                                 </Form.Group>
 
@@ -81,8 +126,8 @@ class AddInventory extends React.Component{
                                         required
                                         type="text"
                                         name={'location'}
-                                        placeHolder="Enter the initial Location"
-                                        value={this.state.location}
+                                        placeholder="Enter the initial Location"
+                                        value={location}
                                         onChange={this.equipmentChange}
                                     />
                                 </Form.Group>
@@ -96,8 +141,8 @@ class AddInventory extends React.Component{
                                         required
                                         type="text"
                                         name={'brand'}
-                                        placeHolder="Enter brand"
-                                        value={this.state.brand}
+                                        placeholder="Enter brand"
+                                        value={brand}
                                         onChange={this.equipmentChange}
                                     />
                                 </Form.Group>
@@ -108,8 +153,8 @@ class AddInventory extends React.Component{
                                         required
                                         type="text"
                                         name={'model'}
-                                        placeHolder="Enter Model"
-                                        value={this.state.model}
+                                        placeholder="Enter Model"
+                                        value={model}
                                         onChange={this.equipmentChange}
                                     />
                                 </Form.Group>
@@ -119,7 +164,7 @@ class AddInventory extends React.Component{
                                     <Form.Control
                                         required as={"select"} name={'type'}
                                         defaultValue={"PC"}
-                                        value={this.state.type}
+                                        value={type}
                                         onChange={this.equipmentChange}>
 
                                         <option>PC</option>
@@ -138,7 +183,7 @@ class AddInventory extends React.Component{
                                         required
                                         type="date"
                                         name={'purchaseDate'}
-                                        value={this.state.purchaseDate}
+                                        value={purchaseDate}
                                         onChange={this.equipmentChange}
                                     />
                                 </Form.Group>
@@ -149,8 +194,8 @@ class AddInventory extends React.Component{
                                         required
                                         type="number"
                                         name={'warrantyMonths'}
-                                        placeHolder="Enter number of warranty months"
-                                        value={this.state.warrantyMonths}
+                                        placeholder="Enter number of warranty months"
+                                        value={warrantyMonths}
                                         onChange={this.equipmentChange}
                                     />
                                 </Form.Group>
@@ -163,6 +208,9 @@ class AddInventory extends React.Component{
 
                             <Card.Footer>
                                 <Button className={'btn btn-success'} type={'submit'}>Add Item</Button>
+                            </Card.Footer>
+                            <Card.Footer>
+                                <Button className={'btn btn-secondary'} type={'reset'}>Reset Values</Button>
                             </Card.Footer>
                         </Form>
 
