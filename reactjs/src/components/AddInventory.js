@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import axios from "axios";
-import InventoryAddedToast from "./InventoryAddedToast";
+import Toast1 from "./Toast1";
 
 class AddInventory extends React.Component{
 
@@ -68,6 +68,10 @@ class AddInventory extends React.Component{
 
     }
 
+    toggleToastShow = () => {
+        this.setState({"show" : false})
+    }
+
 
 
     render() {
@@ -82,9 +86,14 @@ class AddInventory extends React.Component{
                 <Col style={padding}>
                     <div>
                         <div style={{"display":this.state.show ? "block" :"none" }}>
-                            <InventoryAddedToast
-                                children={{show:this.state.show,
-                                    message:"Equipment added successfully"}}/>
+                            <Toast1
+
+
+                                children={{
+                                    show:this.state.show,
+                                    message:"Equipment added successfully",
+                                    type: 'success',
+                                }} />
                         </div>
                     </div>
                     <Card className={'border border-dark bg-light'}>

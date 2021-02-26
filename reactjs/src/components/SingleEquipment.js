@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Card, Container, Table, Col, Row} from "react-bootstrap";
+import axios from "axios";
 
 class SingleEquipment extends React.Component{
     constructor(props) {
@@ -43,13 +44,16 @@ class SingleEquipment extends React.Component{
         )
     }
 
-    deleteItem(){
-        fetch("http://localhost:8080/api/deleteEquipment"+this.state.equipment.assetId)
-            .then(response => response.json())
-            .then((data) => {
-                this.setState({equipment: data})
+    deleteItem = (assetId) => {
+
+        axios.delete("http://localhost:8080/api/deleteEquipment/"+assetId)
+            .then(response => {
+                if(response.data != null){
+                    alert("Item deleted");
+                }
             });
-    }
+    };
+
 
     render() {
         //const {data} = this.props.location;
@@ -108,7 +112,9 @@ class SingleEquipment extends React.Component{
                     <Card.Footer>
                         <Row>
                         <Col>
-                            <Button onClick={this.deleteItem()} className={'btn btn-danger'}>Delete Item from inventory</Button>
+                            <Button onClick=
+                                        {this.deleteItem.bind(this,this.state.equipment.assetId)}
+                                    className={'btn btn-danger'}>Delete Item from inventory</Button>
                         </Col>
 
                         <Col>
