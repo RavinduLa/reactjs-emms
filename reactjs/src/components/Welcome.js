@@ -13,7 +13,7 @@ class Welcome extends React.Component{
 
                 <Row>
                     <Col style={marginTop}>
-                        <Jumbotron className='bg-dark text-white' >
+                        <Jumbotron className='bg-info text-white' >
                             <h1>Welcome to the EMMS</h1>
                             <p>
                                This is the Equipment Maintenance Management System of  CPC IT function

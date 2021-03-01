@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Container, Form, Table} from "react-bootstrap";
+import {Button, Container, Table} from "react-bootstrap";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import Toast1 from "./Toast1";
@@ -20,21 +20,28 @@ class InventoryList extends React.Component{
     }
 
     componentDidMount() {
+
         /*axios.get("http://localhost:8080/api/equipment")
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({equipment: data})
+            });*/
+
+        axios.get("http://172.31.8.58:8080/api/equipment")
             .then(response => response.data)
             .then((data) => {
                 this.setState({equipment: data})
             });
 
-        fetch('http://localhost:8080/api/equipment')
+        /*fetch('http://localhost:8080/api/equipment')
             .then(response => response.json())
             .then(data => console.log(data));*/
 
-        fetch("http://localhost:8080/api/equipment")
+        /*fetch("http://localhost:8080/api/equipment",{mode:'cors'})
             .then(response => response.json())
             .then((data) => {
                 this.setState({equipment: data})
-            });
+            });*/
 
 
     }

@@ -114,7 +114,8 @@ class SingleEquipment extends React.Component{
                         <Col>
                             <Button onClick=
                                         {this.deleteItem.bind(this,this.state.equipment.assetId)}
-                                    className={'btn btn-danger'}>Delete Item from inventory</Button>
+                                    className={'btn btn-danger'}>Delete Item from inventory
+                            </Button>
                         </Col>
 
                         <Col>

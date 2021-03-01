@@ -5,7 +5,7 @@ import NavigationBar from './components/NavigationBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 
-import {Container, Row, Jumbotron, Col} from 'react-bootstrap';
+//import {Container, Row, Jumbotron, Col} from 'react-bootstrap';
 import Welcome from "./components/Welcome";
 import Footer from "./components/Footer";
 import Inventory from "./components/Inventory";

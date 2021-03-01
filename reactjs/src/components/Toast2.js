@@ -1,7 +1,7 @@
 import React from "react";
 import {Toast, ToastBody} from "react-bootstrap";
 
-class Toast1 extends React.Component{
+class Toast2 extends React.Component{
     render() {
         const toastCss= {
             position: 'fixed',
@@ -20,9 +20,9 @@ class Toast1 extends React.Component{
                     show={this.props.children.show}
                 >
                     <Toast.Header className={
-                        `"bg-warning" ${this.props.children.type === 'success' ? 
+                        `"bg-warning" ${this.props.children.type === 'success' ?
                             'bg-success text-white':'bg-danger text-white'}`} closeButton={true}>
-                        <strong className={'mr-auto'}>Success</strong>
+                        <strong className={'mr-auto'}>Warning</strong>
 
                     </Toast.Header>
                     <Toast.Body>
@@ -33,4 +33,4 @@ class Toast1 extends React.Component{
         )
     }
 }
-export default Toast1;
+export default Toast2;

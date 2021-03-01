@@ -2,6 +2,8 @@ import React from "react";
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import Toast1 from "./Toast1";
+import Toast2 from "./Toast2";
+
 
 class AddInventory extends React.Component{
 
@@ -9,6 +11,7 @@ class AddInventory extends React.Component{
         super(props);
         this.state= this.initialState;
         this.state.show = false;
+        this.state.idWarningShow = false;
         this.submitEquipment = this.submitEquipment.bind(this);
         this.equipmentChange = this.equipmentChange.bind(this);
     }
@@ -21,7 +24,8 @@ class AddInventory extends React.Component{
         model:'',
         type:'',
         purchaseDate:'',
-        warrantyMonths:''
+        warrantyMonths:'',
+        idAvailabilityStatus: ''
     }
 
     submitEquipment = event => {
@@ -40,21 +44,62 @@ class AddInventory extends React.Component{
             purchaseDate: this.state.purchaseDate,
             warrantyMonths: this.state.warrantyMonths,
         }
-        axios.post("http://localhost:8080/api/addEquipment",equipment)
-            .then(response =>{
-                if(response.data != null){
-                    this.setState({"show" : true})
-                    setTimeout(() => this.setState({"show" : false}),3000)
-                    //alert("Equipment added to the inventory succesfully")
-                }
-                else {
-                    this.setState({"show" : false})
-                }
-            }).catch( (reject) => {
+
+
+        this.isAssetIdAvailable();
+        if(this.state.idAvailabilityStatus == 'available'){
+            //alert("Id is not available")
+            console.log("Id status: available");
+
+            axios.post("http://localhost:8080/api/addEquipment",equipment)
+                .then(response =>{
+                    if(response.data != null){
+                        this.setState({"show" : true})
+                        setTimeout(() => this.setState({"show" : false}),3000)
+                        //alert("Equipment added to the inventory succesfully")
+                    }
+                    else {
+                        this.setState({"show" : false})
+                    }
+                }).catch( (reject) => {
                 alert("rejected: " +reject);
-        })
-        this.setState(this.initialState);
+            })
+            this.setState(this.initialState);
+        }
+        else{
+            console.log("id status: unavailable");
+        }
+
     }
+
+
+    isAssetIdAvailable = (status) =>{
+        if(this.state.assetId == null){
+            console.log("Asset id is null");
+        }
+        else {
+            console.log("Asset id: " + this.state.assetId);
+            axios.get("http://localhost:8080/api/checkIdAvailability/"+this.state.assetId)
+                .then(response => {
+                    if(response.data == true){
+                        console.log("Id is not used");
+                        this.state.idAvailabilityStatus = 'available';
+
+                        //this.state.idWarningShow = false;
+                        return true;
+                    }
+                    else {
+                        console.log("Id is used already");
+                        this.setState({"idWarningShow" : true})
+                        setTimeout(() => this.setState({"idWarningShow" : false}),3000)
+                        return  false;
+                    }
+                }).catch( (error) => {
+                alert("Error: "+ error)
+            });
+        }
+
+        };
 
     equipmentChange = event =>{
         this.setState({
@@ -83,19 +128,30 @@ class AddInventory extends React.Component{
         return(
 
             <Container fluid>
-                <Col style={padding}>
-                    <div>
+
+                {/*<Col style={padding}>*/}
+
                         <div style={{"display":this.state.show ? "block" :"none" }}>
                             <Toast1
-
-
                                 children={{
                                     show:this.state.show,
                                     message:"Equipment added successfully",
                                     type: 'success',
                                 }} />
                         </div>
-                    </div>
+
+                <div style={{"display":this.state.idWarningShow ? "block" :"none" }}>
+                    <Toast2
+                        children={{
+
+                            show:this.state.idWarningShow,
+                            message:"Id is already used",
+                            type: 'warning',
+                        }} />
+                </div>
+
+
+                <div style={padding}>
                     <Card className={'border border-dark bg-light'}>
                         <Card.Header>Add Item to Inventory</Card.Header>
 
@@ -216,17 +272,35 @@ class AddInventory extends React.Component{
                             </Card.Body>
 
                             <Card.Footer>
-                                <Button className={'btn btn-success'} type={'submit'}>Add Item</Button>
+                                <Row>
+                                    <Col>
+                                        <Button className={'btn btn-success'} type={'submit'}>Add Item</Button>
+                                    </Col>
+                                    <Col>
+                                        <Button className={'btn btn-secondary'} type={'reset'}>Reset Values</Button>
+                                    </Col>
+
+                                    <Col>
+                                        <Button className={'btn btn-info'} onClick={this.isAssetIdAvailable}>
+                                            Check asset id
+                                        </Button>
+                                    </Col>
+                                </Row>
+
+
                             </Card.Footer>
-                            <Card.Footer>
+                            {/*<Card.Footer>
                                 <Button className={'btn btn-secondary'} type={'reset'}>Reset Values</Button>
-                            </Card.Footer>
+                            </Card.Footer>*/}
                         </Form>
 
 
 
                     </Card>
-                </Col>
+
+                {/*</Col>*/}
+
+                </div>
 
             </Container>
         );
