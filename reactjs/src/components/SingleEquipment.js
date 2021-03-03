@@ -6,7 +6,21 @@ class SingleEquipment extends React.Component{
     constructor(props) {
         super(props);
 
-        //const {data} = this.props.location;
+        const {data} = this.props.location;
+
+        this.setState(
+            {equipment:
+                    {
+                        assetId: data.assetId,
+                        serialNumber: data.serialNumber,
+                        location: data.location,
+                        brand: data.brand,
+                        model: data.model,
+                        purchaseDate: data.purchaseDate,
+                        warrantyMonths: data.warrantyMonths,
+                    }
+            }
+        )
 
         this.state = {
             /*equipment : {
@@ -42,6 +56,13 @@ class SingleEquipment extends React.Component{
                     }
             }
         )
+
+        const URL_LOCALHOST = "http://localhost:8080/api/getequipmentById";
+        axios.get(URL_LOCALHOST,this.state.equipment)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({equipment: data})
+            });
     }
 
     deleteItem = (assetId) => {
@@ -66,6 +87,8 @@ class SingleEquipment extends React.Component{
                 <Card  bg={'light'}>
                     <Card.Header><Card.Title>Asset ID: {this.state.equipment.assetId}</Card.Title></Card.Header>
                     <Card.Body>
+
+
                         <Table striped bordered hover variant='light'>
                             <tbody>
                             <tr>

@@ -12,6 +12,9 @@ import Inventory from "./components/Inventory";
 import Header from "./components/Header";
 import AddInventory from "./components/AddInventory";
 import SingleEquipment from "./components/SingleEquipment";
+import Maintenance from "./components/Maintenance";
+import AddJob from "./components/AddJob";
+import Dashboard from "./components/Dashboard";
 
 function App() {
 
@@ -25,6 +28,9 @@ function App() {
             <Route path="/inventory" exact component={Inventory} />
             <Route path="/addInventory" exact component={AddInventory} />
             <Route path="/singleEquipment" exact component={SingleEquipment} />
+            <Route path="/maintenance" exact component={Maintenance} />
+            <Route path="/addNewJob" exact component={AddJob} />
+            <Route path="/dashboard-admin" exact component={Dashboard} />
         </Switch>
 
         {/*<Container>

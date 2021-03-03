@@ -6,13 +6,13 @@ import Toast1 from "./Toast1";
 
 
 class InventoryList extends React.Component{
+
     constructor(props) {
         super(props);
         this.state = this.initialState
         this.state.show=  false
         this.state={
             equipment: [],
-
         }
     }
     initialState ={
@@ -27,7 +27,11 @@ class InventoryList extends React.Component{
                 this.setState({equipment: data})
             });*/
 
-        axios.get("http://172.31.8.58:8080/api/equipment")
+        const URL_LOCALHOST = "http://localhost:8080/api/equipment";
+        const URLIP = "http://172.31.8.58:8080/api/equipment";
+        const DELETE_LOCALHOST_URL = "http://localhost:8080/api/deleteEquipment/";
+
+        axios.get(URL_LOCALHOST)
             .then(response => response.data)
             .then((data) => {
                 this.setState({equipment: data})
@@ -47,7 +51,12 @@ class InventoryList extends React.Component{
     }
 
     deleteItem = (assetId) =>{
-        axios.delete("http://localhost:8080/api/deleteEquipment/"+assetId)
+
+        const URL_LOCALHOST = "http://localhost:8080/api/equipment";
+        const URL_IP = "http://172.31.8.58:8080/api/equipment";
+        const DELETE_LOCALHOST_URL = "http://localhost:8080/api/deleteEquipment/";
+
+        axios.delete(DELETE_LOCALHOST_URL+assetId)
             .then(response => {
                if(response.data != null){
                    //alert("Item deleted");
@@ -89,7 +98,7 @@ class InventoryList extends React.Component{
                     {
                         this.state.equipment.length === 0?
                             <tr align='center'>
-                                <td colSpan={6}> {this.state.equipment.length} records available</td>
+                                <td colSpan={6}> {this.state.equipment.length} records available </td>
                             </tr> :
                             this.state.equipment.map( (e) => (
                                     <tr key={e.assetId}>

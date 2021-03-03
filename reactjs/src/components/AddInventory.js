@@ -32,6 +32,8 @@ class AddInventory extends React.Component{
         //alert()
 
         event.preventDefault();
+        const URLLocalHost = "http://localhost:8080/api/addEquipment";
+        const URLIP = "http/192.168.12.9:8080/api/addEquipment";
 
         //creating a json object
         const equipment = {
@@ -51,7 +53,7 @@ class AddInventory extends React.Component{
             //alert("Id is not available")
             console.log("Id status: available");
 
-            axios.post("http://localhost:8080/api/addEquipment",equipment)
+            axios.post(URLLocalHost,equipment)
                 .then(response =>{
                     if(response.data != null){
                         this.setState({"show" : true})

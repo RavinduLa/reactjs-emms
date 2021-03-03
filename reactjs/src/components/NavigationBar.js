@@ -15,7 +15,8 @@ class NavigationBar extends React.Component{
 
                 <Nav className="mr-auto">
                     <Link to={"/inventory"} className='nav-link'>Inventory</Link>
-                    <Link to={"/"} className='nav-link'>Dashboard</Link>
+                    <Link to={"/dashboard-admin"} className='nav-link'>Dashboard</Link>
+                    <Link to={"/maintenance"} className='nav-link'>Maintenance</Link>
                 </Nav>
 
             </Navbar>
