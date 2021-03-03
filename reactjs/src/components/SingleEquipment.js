@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Card, Container, Table, Col, Row} from "react-bootstrap";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class SingleEquipment extends React.Component{
     constructor(props) {
@@ -142,7 +143,7 @@ class SingleEquipment extends React.Component{
                         </Col>
 
                         <Col>
-                            <Button  className={'btn btn-warning'}>Update Item in inventory</Button>
+                            <Link to={"/EditEquipment"}  className={'btn btn-warning'}>Update Item in inventory</Link>
                         </Col>
 
                         </Row>

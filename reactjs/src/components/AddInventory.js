@@ -123,7 +123,7 @@ class AddInventory extends React.Component{
 
     render() {
         const padding={
-            padding:'20px'
+            padding:'10px'
         }
 
         const {assetId,serialNumber,location,brand,model,type,purchaseDate,warrantyMonths} = this.state;
@@ -132,6 +132,8 @@ class AddInventory extends React.Component{
             <Container fluid>
 
                 {/*<Col style={padding}>*/}
+
+                <div style={padding}>
 
                         <div style={{"display":this.state.show ? "block" :"none" }}>
                             <Toast1
@@ -153,7 +155,7 @@ class AddInventory extends React.Component{
                 </div>
 
 
-                <div style={padding}>
+
                     <Card className={'border border-dark bg-light'}>
                         <Card.Header>Add Item to Inventory</Card.Header>
 
@@ -202,7 +204,7 @@ class AddInventory extends React.Component{
 
                                 <Form.Row>
 
-                                <Form.Group controlId={"formLocation"} as={Col}>
+                                <Form.Group controlId={"formBrand"} as={Col}>
                                     <Form.Label>Brand</Form.Label>
                                     <Form.Control
                                         required
@@ -214,7 +216,7 @@ class AddInventory extends React.Component{
                                     />
                                 </Form.Group>
 
-                                <Form.Group controlId={"formLocation"} as={Col}>
+                                <Form.Group controlId={"formModel"} as={Col}>
                                     <Form.Label>Model</Form.Label>
                                     <Form.Control
                                         required

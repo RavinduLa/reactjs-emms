@@ -7,7 +7,7 @@ class Toast1 extends React.Component{
             position: 'fixed',
             top: '20px',
             right: '20px',
-            boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px o rgba(0,0,0,0.9)',
+            boxShadow: '0 40px 80px 0 rgba(0,0,0,0.2), 0 60px 200px o rgba(0,0,0,0.9)',
 
         }
         return(

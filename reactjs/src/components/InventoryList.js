@@ -130,6 +130,17 @@ class InventoryList extends React.Component{
                                         </td>
 
                                         <td>
+                                            <Link to={{
+                                                pathname: '/updateEquipment',
+                                                data: {
+                                                    assetId: e.assetId,
+                                                },
+                                            }} >
+                                                Edit Item details
+                                            </Link>
+                                        </td>
+
+                                        <td>
 
                                             <Button
                                                 onClick={this.deleteItem.bind(this,e.assetId)}

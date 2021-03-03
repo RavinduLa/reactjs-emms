@@ -21,7 +21,7 @@ class Toast2 extends React.Component{
                 >
                     <Toast.Header className={
                         `"bg-warning" ${this.props.children.type === 'success' ?
-                            'bg-success text-white':'bg-danger text-white'}`} closeButton={true}>
+                            'bg-success text-white':'bg-warning text-white'}`} closeButton={true}>
                         <strong className={'mr-auto'}>Warning</strong>
 
                     </Toast.Header>
