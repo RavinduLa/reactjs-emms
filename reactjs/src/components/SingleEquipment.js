@@ -19,6 +19,9 @@ class SingleEquipment extends React.Component{
                         model: data.model,
                         purchaseDate: data.purchaseDate,
                         warrantyMonths: data.warrantyMonths,
+                        ipAddress: data.ipAddress,
+                        purchaseOrderNumber: data.purchaseOrderNumber,
+                        workStationId: data.workStationId
                     }
             }
         )
@@ -54,12 +57,15 @@ class SingleEquipment extends React.Component{
                         model: data.model,
                         purchaseDate: data.purchaseDate,
                         warrantyMonths: data.warrantyMonths,
+                        ipAddress: data.ipAddress,
+                        purchaseOrderNumber: data.purchaseOrderNumber,
+                        workStationId: data.workStationId
                     }
             }
         )
 
-        const URL_LOCALHOST = "http://localhost:8080/api/getequipmentById";
-        axios.get(URL_LOCALHOST,this.state.equipment)
+        const URL_LOCALHOST = "http://localhost:8080/api/getequipmentById/";
+        axios.get(URL_LOCALHOST+this.state.equipment)
             .then(response => response.data)
             .then((data) => {
                 this.setState({equipment: data})
@@ -128,6 +134,28 @@ class SingleEquipment extends React.Component{
                                     <Card.Text>{this.state.equipment.warrantyMonths}</Card.Text>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td>
+                                    <Card.Subtitle>IP address</Card.Subtitle>
+                                    <Card.Text>{this.state.equipment.ipAddress}</Card.Text>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <Card.Subtitle>Purchase Order Number</Card.Subtitle>
+                                    <Card.Text>{this.state.equipment.purchaseOrderNumber}</Card.Text>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <Card.Subtitle>Workstation Id</Card.Subtitle>
+                                    <Card.Text>{this.state.equipment.workStationId}</Card.Text>
+                                </td>
+                            </tr>
+
                             </tbody>
                         </Table>
 

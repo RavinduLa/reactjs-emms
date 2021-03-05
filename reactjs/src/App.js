@@ -16,6 +16,9 @@ import Maintenance from "./components/Maintenance";
 import AddJob from "./components/AddJob";
 import Dashboard from "./components/Dashboard";
 import EditEquipment from "./components/EditEquipment";
+import Departments from "./components/Departments";
+import AddDepartment from "./components/AddDepartment";
+import TestForm from "./components/TestForm";
 
 function App() {
 
@@ -33,6 +36,9 @@ function App() {
             <Route path="/addNewJob" exact component={AddJob} />
             <Route path="/dashboard-admin" exact component={Dashboard} />
             <Route path="/updateEquipment" exact component={EditEquipment} />
+            <Route path="/departments" exact component={Departments} />
+            <Route path="/addDepartment" exact component={AddDepartment} />
+            <Route path="/testForm" exact component={TestForm} />
         </Switch>
 
         {/*<Container>

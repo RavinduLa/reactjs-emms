@@ -7,28 +7,82 @@ import Toast2 from "./Toast2";
 
 class AddInventory extends React.Component{
 
+
+
     constructor(props) {
         super(props);
         this.state= this.initialState;
         this.state.show = false;
         this.state.idWarningShow = false;
+        this.state={
+            deptList: [],
+        }
         this.submitEquipment = this.submitEquipment.bind(this);
         this.equipmentChange = this.equipmentChange.bind(this);
+        this.departmentChange = this.departmentChange.bind(this);
     }
 
     initialState = {
         assetId: '',
         serialNumber:'',
         location:'',
+        department:'',
         brand:'',
         model:'',
         type:'',
         purchaseDate:'',
         warrantyMonths:'',
-        idAvailabilityStatus: ''
+        idAvailabilityStatus: '',
+        purchaseOrderNumber: '',
+        ipAddress: '',
+        workStationId: '',
+
+        departmentList:[],
+        deptList: [],
     }
 
-    submitEquipment = event => {
+    componentDidMount() {
+
+        const LOCAL_HOST_URL = "http://localhost:8080/api/allDepartments";
+        axios.get(LOCAL_HOST_URL)
+            .then( response => response.data)
+            .then((data) =>{
+
+                this.setState({deptList: data})
+                this.setState({department: data[0].departmentName })
+                this.setState({type: "PC"})
+                //this.setState({department: data[0]})
+
+                /*if(data!= null){
+
+                }
+                else{
+                    this.setState({department: "No departments"})
+                }*/
+
+            });
+    }
+
+    createSelectItems(){
+        let items2= [];
+        let items = [];
+        const LOCAL_HOST_URL = "http://localhost:8080/api/allDepartments";
+        axios.get(LOCAL_HOST_URL)
+            .then(response => {
+                if(response.data != null){
+                    items2 = response.data;
+
+                }
+            })
+
+        for( let i = 0; i < items2.length; i++){
+            items.push(<option key={i} value={i}>{i}</option>)
+        }
+
+        return items;
+    }
+
+    submitEquipment = (event) => {
         //alert()
 
         event.preventDefault();
@@ -40,11 +94,15 @@ class AddInventory extends React.Component{
             assetId: this.state.assetId,
             serialNumber: this.state.serialNumber,
             location: this.state.location,
+            department: this.state.department,
             brand: this.state.brand,
             model: this.state.model,
             type: this.state.type,
             purchaseDate: this.state.purchaseDate,
             warrantyMonths: this.state.warrantyMonths,
+            purchaseOrderNumber: this.state.purchaseOrderNumber,
+            ipAddress: this.state.ipAddress,
+            workStationId: this.state.workStationId,
         }
 
 
@@ -53,11 +111,13 @@ class AddInventory extends React.Component{
             //alert("Id is not available")
             console.log("Id status: available");
 
+            //console.log("Equipment: " + this.state.equipment.purchaseDate)
             axios.post(URLLocalHost,equipment)
                 .then(response =>{
                     if(response.data != null){
                         this.setState({"show" : true})
                         setTimeout(() => this.setState({"show" : false}),3000)
+
                         //alert("Equipment added to the inventory succesfully")
                     }
                     else {
@@ -66,7 +126,9 @@ class AddInventory extends React.Component{
                 }).catch( (reject) => {
                 alert("rejected: " +reject);
             })
-            this.setState(this.initialState);
+            //this.setState(this.initialState);
+            //this.setState( () => this.initialState);
+            this.resetEquipment();
         }
         else{
             console.log("id status: unavailable");
@@ -102,6 +164,12 @@ class AddInventory extends React.Component{
         }
 
         };
+    onDropDownSelected (e) {
+
+        //this.state.department =  e.target.value;
+        console.log("THE VAL", e.target.value);
+
+    }
 
     equipmentChange = event =>{
         this.setState({
@@ -110,9 +178,26 @@ class AddInventory extends React.Component{
 
     }
 
+    departmentChange  = (event) =>{
+        //this.setState({department: event.value})
+        console.log("dept value: "+event.target.value)
+        //this.state.department = event.value;
+        this.setState({department : event.target.value})
+    }
+
+    /*change: function(event){
+        this.setState({de})
+
+    }*/
+
     resetEquipment = () => {
         this.setState( () => this.initialState);
-
+        const LOCAL_HOST_URL = "http://localhost:8080/api/allDepartments";
+        axios.get(LOCAL_HOST_URL)
+            .then( response => response.data)
+            .then((data) => {
+                this.setState({deptList: data})
+            });
     }
 
     toggleToastShow = () => {
@@ -126,7 +211,29 @@ class AddInventory extends React.Component{
             padding:'10px'
         }
 
-        const {assetId,serialNumber,location,brand,model,type,purchaseDate,warrantyMonths} = this.state;
+
+        let axiosResponse = axios.get("http://localhost:8080/api/allDepartments")
+            .then( response => {
+                if(response.data != null){
+                    Data = response.data;
+                    for(let i = 0; i < response.data.length; i++){
+                        Data[i] = response.data.departmentName
+                    }
+                    console.log("Data"+Data)
+                }
+                else {
+                    alert("department list empty")
+                }
+            }).catch(error => {
+                alert(error)
+            })
+        let Data =[],
+            MakeItem= function (X){
+                return <option>{X}</option>
+            }
+
+
+        const {assetId,serialNumber,location,department,brand,model,type,purchaseDate,warrantyMonths} = this.state;
         return(
 
             <Container fluid>
@@ -159,8 +266,8 @@ class AddInventory extends React.Component{
                     <Card className={'border border-dark bg-light'}>
                         <Card.Header>Add Item to Inventory</Card.Header>
 
-                        <Form onReset={this.resetEquipment} id={'addNewInventoryForm'}
-                              onSubmit={this.submitEquipment}>
+                        <Form onReset={this.resetEquipment.bind(this)} id={'addNewInventoryForm'}
+                              onSubmit={this.submitEquipment.bind(this)}>
                             <Card.Body>
                                 <Form.Row>
 
@@ -200,6 +307,34 @@ class AddInventory extends React.Component{
                                         onChange={this.equipmentChange}
                                     />
                                 </Form.Group>
+
+
+
+
+                                    <Form.Group controlId={"formDepartment"} as={Col}>
+                                        <Form.Label>Department</Form.Label>
+                                        <Form.Control
+                                             as={"select"} required name={'department'}
+                                            defaultValue={"IT"}
+                                            value={department}
+                                            onChange={this.departmentChange.bind(this)}>
+
+
+                                            {
+                                                this.state.deptList.length === 0?
+                                                    <option>No depts</option>:
+                                                    this.state.deptList.map( (e) =>(
+                                                        <option  value={e.departmentName} datatype="text">
+                                                            {e.departmentName}
+                                                        </option>
+                                                    ))
+                                            }
+
+                                        </Form.Control>
+                                    </Form.Group>
+
+
+
                                 </Form.Row>
 
                                 <Form.Row>
@@ -234,10 +369,10 @@ class AddInventory extends React.Component{
                                         required as={"select"} name={'type'}
                                         defaultValue={"PC"}
                                         value={type}
-                                        onChange={this.equipmentChange}>
+                                        onChange={this.equipmentChange.bind(this)}>
 
-                                        <option>PC</option>
-                                        <option>Networking</option>
+                                        <option value={'PC'} datatype={'text'}>PC</option>
+                                        <option value={'Networking'}  datatype={'text'}>Networking</option>
 
                                     </Form.Control>
                                 </Form.Group>
@@ -268,6 +403,44 @@ class AddInventory extends React.Component{
                                         onChange={this.equipmentChange}
                                     />
                                 </Form.Group>
+
+                                    <Form.Group controlId={"formPurchaseOrderNumber"} as={Col}>
+                                        <Form.Label>Purchase Order Number</Form.Label>
+                                        <Form.Control
+                                            required
+                                            type="number"
+                                            name={'purchaseOrderNumber'}
+                                            placeholder="Enter the purchase order number"
+
+                                            value={this.state.purchaseOrderNumber}
+
+                                            onChange={this.equipmentChange}
+                                        />
+                                    </Form.Group>
+
+                                    <Form.Group controlId={"formIpAddress"} as={Col}>
+                                        <Form.Label>IP address</Form.Label>
+                                        <Form.Control
+                                            required
+                                            type="text"
+                                            name={'ipAddress'}
+                                            placeholder="Enter the purchase order number"
+                                            value={this.state.ipAddress}
+                                            onChange={this.equipmentChange}
+                                        />
+                                    </Form.Group>
+
+                                    <Form.Group controlId={"formWorkstationId"} as={Col}>
+                                        <Form.Label>Workstation Id</Form.Label>
+                                        <Form.Control
+                                            required
+                                            type="text"
+                                            name={'workStationId'}
+                                            placeholder="Enter the workstation id"
+                                            value={this.state.workStationId}
+                                            onChange={this.equipmentChange}
+                                        />
+                                    </Form.Group>
 
 
                                 </Form.Row>
