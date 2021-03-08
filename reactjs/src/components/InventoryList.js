@@ -86,10 +86,14 @@ class InventoryList extends React.Component{
                         <th>Asset Id</th>
                         <th>Serial Number</th>
                         <th>Location</th>
+                        <th>Department</th>
                         <th>Brand</th>
                         <th>Model</th>
                         <th>Purchase Date</th>
                         <th>Warranty Months</th>
+                        <th>IP address</th>
+                        <th>PO Number</th>
+                        <th>Workstation ID</th>
                     </tr>
 
                     </thead>
@@ -105,10 +109,14 @@ class InventoryList extends React.Component{
                                         <td>{e.assetId}</td>
                                         <td>{e.serialNumber}</td>
                                         <td>{e.location}</td>
+                                        <td>{e.department}</td>
                                         <td>{e.brand}</td>
                                         <td>{e.model}</td>
                                         <td>{e.purchaseDate}</td>
                                         <td>{e.warrantyMonths}</td>
+                                        <td>{e.ipAddress}</td>
+                                        <td>{e.purchaseOrderNumber}</td>
+                                        <td>{e.workStationId}</td>
 
 
 

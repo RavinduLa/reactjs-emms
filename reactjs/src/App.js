@@ -19,6 +19,11 @@ import EditEquipment from "./components/EditEquipment";
 import Departments from "./components/Departments";
 import AddDepartment from "./components/AddDepartment";
 import TestForm from "./components/TestForm";
+import Admin from "./components/Admin";
+import EquipmentConfiguration from "./components/EquipmentConfiguration";
+import EquipmentCategories from "./components/EquipmentCategories";
+import EquipmentCategoryList from "./components/EquipmentCategoryList";
+import AddEquipmentCategory from "./components/AddEquipmentCategory";
 
 function App() {
 
@@ -39,6 +44,11 @@ function App() {
             <Route path="/departments" exact component={Departments} />
             <Route path="/addDepartment" exact component={AddDepartment} />
             <Route path="/testForm" exact component={TestForm} />
+            <Route path="/admin" exact component={Admin} />
+            <Route path="/equipmentConfiguration" exact component={EquipmentConfiguration} />
+            <Route path="/equipmentCategories" exact component={EquipmentCategories} />
+            <Route path="/equipmentCategoryList" exact component={EquipmentCategoryList} />
+            <Route path="/addEquipmentCategory" exact component={AddEquipmentCategory} />
         </Switch>
 
         {/*<Container>

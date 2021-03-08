@@ -123,7 +123,8 @@ class AddInventory extends React.Component{
                     else {
                         this.setState({"show" : false})
                     }
-                }).catch( (reject) => {
+                })
+                .catch( (reject) => {
                 alert("rejected: " +reject);
             })
             //this.setState(this.initialState);
@@ -339,6 +340,20 @@ class AddInventory extends React.Component{
 
                                 <Form.Row>
 
+                                    <Form.Group controlId={"formType"} as={Col}>
+                                        <Form.Label>Equipment Type</Form.Label>
+                                        <Form.Control
+                                            required as={"select"} name={'type'}
+                                            defaultValue={"PC"}
+                                            value={type}
+                                            onChange={this.equipmentChange.bind(this)}>
+
+                                            <option value={'PC'} datatype={'text'}>PC</option>
+                                            <option value={'Networking'}  datatype={'text'}>Networking</option>
+
+                                        </Form.Control>
+                                    </Form.Group>
+
                                 <Form.Group controlId={"formBrand"} as={Col}>
                                     <Form.Label>Brand</Form.Label>
                                     <Form.Control
@@ -363,19 +378,7 @@ class AddInventory extends React.Component{
                                     />
                                 </Form.Group>
 
-                                <Form.Group controlId={"formType"} as={Col}>
-                                    <Form.Label>Equipment Type</Form.Label>
-                                    <Form.Control
-                                        required as={"select"} name={'type'}
-                                        defaultValue={"PC"}
-                                        value={type}
-                                        onChange={this.equipmentChange.bind(this)}>
 
-                                        <option value={'PC'} datatype={'text'}>PC</option>
-                                        <option value={'Networking'}  datatype={'text'}>Networking</option>
-
-                                    </Form.Control>
-                                </Form.Group>
 
                                 </Form.Row>
 
