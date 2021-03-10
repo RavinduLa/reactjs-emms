@@ -26,7 +26,7 @@ class EquipmentCategoryList extends React.Component{
             .then(response => response.data)
             .then((data) => {
                 this.setState({categories: data})
-            })
+            });
     }
 
     loadCategories = event =>{
@@ -42,17 +42,21 @@ class EquipmentCategoryList extends React.Component{
 
     deleteCategory = (categoryId) =>{
 
-        const URL_LOCALHOST = "http://localhost/api/deleteCategoryById"
+        const URL_LOCALHOST = "http://localhost:8080/api/deleteCategoryById/"
 
         axios.delete(URL_LOCALHOST+categoryId)
             .then(response => {
                 if(response.data != null){
                     this.setState({"show" : true})
                     setTimeout(() => this.setState({"show" : false}),3000)
-                    categories: this.state.categories.filter(categories => categories.categoryId !== categoryId)
+                    //categories: this.state.categories.filter(categories => categories.categoryId !== categoryId)
+                    this.setState({
+                        categories: this.state.categories.filter(categories => categories.categoryName!== categoryId)
+                    })
                 }
             })
     }
+    //categoryId;
 
 
 
@@ -89,7 +93,11 @@ class EquipmentCategoryList extends React.Component{
                                 <td>{c.categoryName}</td>
 
                                 <td>
-                                    <Button onClick={this.deleteCategory.bind(this,c.categoryId)}>Delete</Button>
+                                    <Button
+                                        onClick={this.deleteCategory.bind(this,c.categoryId)}
+                                        className={'btn btn-danger'}>
+                                        Delete
+                                    </Button>
                                 </td>
                             </tr>
                         ))

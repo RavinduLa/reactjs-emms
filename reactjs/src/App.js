@@ -24,6 +24,13 @@ import EquipmentConfiguration from "./components/EquipmentConfiguration";
 import EquipmentCategories from "./components/EquipmentCategories";
 import EquipmentCategoryList from "./components/EquipmentCategoryList";
 import AddEquipmentCategory from "./components/AddEquipmentCategory";
+import Brands from "./components/Brands";
+import AddBrand from "./components/AddBrand";
+import BrandList from "./components/BrandList";
+import BrandsFull from "./components/BrandsFull";
+import AddModels from "./components/AddModels";
+import ModelList from "./components/ModelList";
+import AddBrandsToCategories from "./components/AddBrandsToCategories";
 
 function App() {
 
@@ -48,7 +55,13 @@ function App() {
             <Route path="/equipmentConfiguration" exact component={EquipmentConfiguration} />
             <Route path="/equipmentCategories" exact component={EquipmentCategories} />
             <Route path="/equipmentCategoryList" exact component={EquipmentCategoryList} />
-            <Route path="/addEquipmentCategory" exact component={AddEquipmentCategory} />
+            <Route path="/brands" exact component={Brands} />
+            <Route path="/addBrand" exact component={AddBrand} />
+            <Route path="/brandList" exact component={BrandList} />
+            <Route path="/brandsFull" exact component={BrandsFull} />
+            <Route path="/addModels" exact component={AddModels} />
+            <Route path="/modelList" exact component={ModelList} />
+            <Route path="/addBrandsToCategories" exact component={AddBrandsToCategories} />
         </Switch>
 
         {/*<Container>

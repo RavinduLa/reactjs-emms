@@ -15,8 +15,13 @@ class Admin extends React.Component{
     render() {
         return (
             <div>
-                <Link to={'/equipmentConfiguration'}>Equipment Configurations</Link>
-                <Link to={'/addEquipmentCategory'}>Add Categories</Link>
+                <Link to={'/equipmentConfiguration'}>Equipment Configurations</Link> <br/>
+                <Link to={'/addEquipmentCategory'}>Add Categories</Link> <br/>
+                <Link to={'/addBrandsToCategories'}>Add Brands to Categories</Link>  <br/>
+                <Link to={'/brands'}>Brands</Link>  <br/>
+                <Link to={'/brandsFull'}>Brands Full</Link>  <br/>
+                <Link to={'/addModels'}>Add Models</Link>  <br/>
+                <Link to={'/modelList'}>Model list</Link>  <br/>
             </div>
         );
     }
