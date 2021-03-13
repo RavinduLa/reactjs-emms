@@ -35,12 +35,11 @@ class AddEquipmentCategory extends React.Component{
 
 
 
-    submitCategory = event =>{
+    submitCategory  =  event =>{
         event.preventDefault();
         const URL_LOCALHOST_ADD = "http://localhost:8080/api/addCategory";
 
         const category = {
-
             categoryName: this.state.categoryName
         }
 
@@ -48,7 +47,6 @@ class AddEquipmentCategory extends React.Component{
 
         console.log("Submit before running post")
         console.log("Category Name: "+ this.state.categoryName)
-
         this.isCategoryAvailable()
 
         if(this.state.categoryAvailabilityStatus == 'available'){
@@ -56,11 +54,13 @@ class AddEquipmentCategory extends React.Component{
             console.log("Category is available")
 
             axios.post(URL_LOCALHOST_ADD,category)
-                .then(response => {
+                .then(  response => {
                     console.log("post in then block")
                     if(response.data != null){
+                        this.resetCategory();
                         this.setState({"show": true})
                         setTimeout( () => this.setState( {"show":false}),3000)
+
                     }
                     else {
                         this.setState({"show":false})
@@ -69,23 +69,25 @@ class AddEquipmentCategory extends React.Component{
                 alert("rejected: " +error);
             })
 
-            this.resetCategory.bind(this);
+
         }
         else{
             //this.resetCategory();
             console.log("Category is not available")
         }
 
+        //this.resetCategory()
+
     }
 
-    isCategoryAvailable(){
+    async isCategoryAvailable(){
 
         if(this.state.categoryName == null){
             console.log("Category Name is null");
         }
         else{
             const URL_LOCALHOST = "http://localhost:8080/api/isCategoryAvailable/";
-            axios.get(URL_LOCALHOST + this.state.categoryName)
+            await axios.get(URL_LOCALHOST + this.state.categoryName)
                 .then( response => {
                     if(response.data == true){
                         console.log("Category availability status set available");
@@ -151,10 +153,10 @@ class AddEquipmentCategory extends React.Component{
                                 required
                                 type="text"
                                 name={'categoryName'}
-                                plceholder="Enter category"
-                                defaultValue={this.state.categoryName}
+                                placeholder="Enter category"
+                                value={this.state.categoryName}
 
-                                onChange={this.categoryChange}
+                                onChange={this.categoryChange.bind(this)}
                             />
 
                         </Form.Group>

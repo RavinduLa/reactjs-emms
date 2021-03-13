@@ -1,12 +1,15 @@
 import React from "react";
-import {Col, Form} from "react-bootstrap";
+import {Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
+import Toast1 from "./Toast1";
+import Toast2 from "./Toast2";
 
 class AddBrandsToCategories extends React.Component{
     constructor(props) {
         super(props);
         this.state = this.initialState
         this.state.show = false
+        this.state.duplicateEntry = false
         this.state = {
             brandList : [],
             categoryList: []
@@ -48,13 +51,34 @@ class AddBrandsToCategories extends React.Component{
     submitCombo = (event) => {
         event.preventDefault()
 
+        const combo = {
+            category: this.state.categoryName,
+            brand: this.state.brand
+        }
+
+        const LOCALHOST_URL_ADD_BRAND_TO_CATEGORY = "http://localhost:8080/api/addBrandToCategory/"
+
+        axios.post(LOCALHOST_URL_ADD_BRAND_TO_CATEGORY,combo)
+            .then(response => {
+                if (response.data == true){
+                    this.setState({"show" : true})
+                    setTimeout(() => this.setState({"show" : false}),3000)
+                }
+                else {
+                    this.setState({"show" : false})
+                    this.setState({"duplicateEntry" : true})
+                    setTimeout(() => this.setState({"duplicateEntry" : false}),3000)
+                }
+            }).catch(error => {
+                alert(error)
+        })
 
 
     }
 
     categoryChange = (event) => {
-        //event.preventDefault()
-        this.setState({category: event.target.value})
+        event.preventDefault()
+        this.setState({categoryName: event.target.value})
     }
 
     brandChange = (event) => {
@@ -65,6 +89,23 @@ class AddBrandsToCategories extends React.Component{
         return (
             <div>
 
+                <div style={{"display":this.state.show ? "block" :"none" }}>
+                    <Toast1
+                        children={{
+                            show:this.state.show,
+                            message:"Brand added to category successfully",
+                            type: 'success',
+                        }} />
+                </div>
+
+                <div style={{"display":this.state.duplicateEntry ? "block" :"none" }}>
+                    <Toast2
+                        children={{
+                            show:this.state.duplicateEntry,
+                            message:"This brand is already in this Category",
+                            type: 'warning',
+                        }} />
+                </div>
 
                 <Form onSubmit={this.submitCombo.bind(this)}>
 
@@ -86,14 +127,8 @@ class AddBrandsToCategories extends React.Component{
                                             </option>
                                         ))
                                 }
-
-
                             </Form.Control>
-
-
                         </Form.Group>
-
-
 
                         <Form.Group as={Col}>
                             <Form.Label>Brand</Form.Label>
@@ -112,13 +147,13 @@ class AddBrandsToCategories extends React.Component{
                                             </option>
                                         ))
                                 }
-
-
                             </Form.Control>
 
 
                         </Form.Group>
                     </Form.Row>
+
+                    <Button type={'submit'} className={'btn btn-secondary'}>Add Combination</Button>
 
                 </Form>
             </div>

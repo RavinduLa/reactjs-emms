@@ -2,6 +2,7 @@ import React from "react";
 import Toast1 from "./Toast1";
 import {Button, Col, Form} from "react-bootstrap";
 import axios from "axios";
+import Toast2 from "./Toast2";
 
 class AddModels extends React.Component{
 
@@ -24,6 +25,7 @@ class AddModels extends React.Component{
         modelId:'',
         model:'',
         brand: '',
+        modelAvailabilityStatus:'',
 
         brandList: []
     }
@@ -51,22 +53,52 @@ class AddModels extends React.Component{
             brand: this.state.brand
         }
 
-        console.log("Model details" + model.modelId+ model.model)
-        axios.post(URLLocalHost, model)
-            .then(response => {
-                if (response.data != null){
-                    this.setState({"show" : true})
-                    setTimeout(() => this.setState({"show" : false}),3000)
-                }
-                else {
-                    this.setState({"show" : false})
-                }
-            }).catch(reject => {
+        this.isModelAvailable();
+        if(this.state.modelAvailabilityStatus == 'available'){
+            console.log("Model details" + model.modelId+ model.model)
+            axios.post(URLLocalHost, model)
+                .then(response => {
+                    if (response.data != null){
+                        this.setState({"show" : true})
+                        setTimeout(() => this.setState({"show" : false}),3000)
+                    }
+                    else {
+                        this.setState({"show" : false})
+                    }
+                }).catch(reject => {
                 alert(reject)
-        })
-        this.resetModel()
+            })
+            this.resetModel()
+        }
 
+        else {
+            console.log("Model is not available")
+        }
 
+    }
+
+    isModelAvailable(){
+        if(this.state.model == null){
+            console.log("Model name is null")
+        }
+        else{
+            const URL_LOCALHOST = "http://localhost:8080/api/isModelAvailable/";
+            axios.get(URL_LOCALHOST+this.state.model)
+                .then( response => {
+                    if(response.data == true){
+                        this.state.modelAvailabilityStatus = 'available'
+                        return true;
+                    }
+                    else {
+                        this.state.modelAvailabilityStatus = 'unavailable'
+                        this.setState({"nameWarningShow" : true})
+                        setTimeout(() => this.setState({"nameWarningShow" : false}),3000)
+                        return  false;
+                    }
+                }).catch(error => {
+                    alert(error)
+                })
+        }
     }
 
 
@@ -107,6 +139,15 @@ class AddModels extends React.Component{
                         }} />
                 </div>
 
+                <div style={{"display":this.state.nameWarningShow ? "block" :"none" }}>
+                    <Toast2
+                        children={{
+                            show:this.state.nameWarningShow,
+                            message:"Model is already entered",
+                            type: 'warning',
+                        }} />
+                </div>
+
 
                 <Form onSubmit={this.submitModel.bind(this)} onReset={this.resetModel.bind(this)}
                 id={'modelAddForm'}>
@@ -140,7 +181,7 @@ class AddModels extends React.Component{
                                 required
                                 type="text"
                                 name={'model'}
-                                placeholder="Enter Brand"
+                                placeholder="Enter Model"
                                 value={this.state.model}
 
                                 onChange={this.modelChange.bind(this)}

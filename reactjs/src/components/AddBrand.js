@@ -43,6 +43,7 @@ class AddBrand extends React.Component{
             axios.post(URL_LOCALHOST_ADD,brand)
                 .then(response => {
                     if(response.data !=  null){
+                        this.resetBrand();
                         this.setState({"show": true})
                         setTimeout( () => this.setState( {"show":false}),3000)
                     }
@@ -53,7 +54,7 @@ class AddBrand extends React.Component{
                     alert("Rejected: "+reject)
             })
 
-            this.resetBrand.bind(this)
+            //this.resetBrand.bind(this)
         }
         else {
             console.log("Brand is not available")
@@ -61,14 +62,14 @@ class AddBrand extends React.Component{
 
 
     }
-    isBrandAvailable(){
+    async isBrandAvailable(){
 
         if(this.state.brandName == null){
             console.log("Brand name is null")
         }
         else{
             const URL_LOCALHOST = "http://localhost:8080/api/isBrandAvailable/";
-            axios.get(URL_LOCALHOST+this.state.brandName)
+            await axios.get(URL_LOCALHOST+this.state.brandName)
                 .then( response => {
                     if(response.data ==  true){
                         console.log("Brand availability statue set available");
@@ -88,7 +89,7 @@ class AddBrand extends React.Component{
         }
 
     }
-    resetBrand(){
+    resetBrand = () => {
 
         this.setState( () => this.initialState)
     }

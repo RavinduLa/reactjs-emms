@@ -3,6 +3,7 @@ import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import Toast1 from "./Toast1";
 import Toast2 from "./Toast2";
+import async from "async";
 
 
 class AddInventory extends React.Component{
@@ -15,11 +16,23 @@ class AddInventory extends React.Component{
         this.state.show = false;
         this.state.idWarningShow = false;
         this.state={
+            type:'',
             deptList: [],
+            categoryList: [],
+            brandList: [],
+            modelList: [],
+            filteredBrandList: [],
+            filteredModelList: [],
+            combinationList: [],
+
         }
         this.submitEquipment = this.submitEquipment.bind(this);
         this.equipmentChange = this.equipmentChange.bind(this);
         this.departmentChange = this.departmentChange.bind(this);
+        this.brandChange = this.brandChange.bind(this);
+        this.categoryChange = this.categoryChange.bind(this);
+        this.modelChange = this.modelChange.bind(this);
+        this.updateBrands = this.updateBrands.bind(this)
     }
 
     initialState = {
@@ -39,28 +52,72 @@ class AddInventory extends React.Component{
 
         departmentList:[],
         deptList: [],
+        categoryList: [],
+        brandList: [],
+        modelList: [],
+        filteredBrandList: [],
+        filteredModelList: [],
+        combinationList: []
     }
 
-    componentDidMount() {
+    async componentDidMount () {
 
-        const LOCAL_HOST_URL = "http://localhost:8080/api/allDepartments";
-        axios.get(LOCAL_HOST_URL)
+        const LOCAL_HOST_URL_DEPARTMENTS = "http://localhost:8080/api/allDepartments";
+        const LOCAL_HOST_URL_CATEGORIES = "http://localhost:8080/api/allCategories";
+        const LOCAL_HOST_URL_BRANDS = "http://localhost:8080/api/allBrands";
+        const LOCAL_HOST_URL_MODELS = "http://localhost:8080/api/allModels";
+
+        await axios.get(LOCAL_HOST_URL_DEPARTMENTS)
             .then( response => response.data)
             .then((data) =>{
 
                 this.setState({deptList: data})
-                this.setState({department: data[0].departmentName })
-                this.setState({type: "PC"})
-                //this.setState({department: data[0]})
+                this.setState({department: data[0].departmentName})
 
-                /*if(data!= null){
+            }).catch(error => {
+                alert(error)
+        });
 
-                }
-                else{
-                    this.setState({department: "No departments"})
-                }*/
+        await axios.get(LOCAL_HOST_URL_CATEGORIES)
+            .then(response => response.data)
+            .then( (data) => {
 
-            });
+                console.log("Setting category list and type")
+                console.log("type: " + this.state.type)
+
+                this.setState({categoryList: data}  )
+                this.setState({type: data[0].categoryName}  )
+                //this.state.type = data[0].categoryName
+
+                console.log("type: " + this.state.type)
+
+            }).catch(error => {
+                alert(error)
+        });
+
+        const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
+        console.log("type before find brands : " + this.state.type)
+        await axios.get(LOCAL_HOST_URL_FIND_BRANDS + this.state.type)
+            .then(response => response.data)
+            .then(  (data) => {
+                this.setState( {filteredBrandList:data})
+            }).catch(error => {
+            alert(error)
+        })
+
+        /*console.log("Category List: "+ this.state.categoryList)
+        await axios.get(LOCAL_HOST_URL_BRANDS)
+            .then(response => response.data)
+            .then( (data) => {
+                this.setState({brandList: data})
+                this.setState({brand: data[0].brandName})
+            }).catch(error => {
+            alert(error)
+        })*/
+
+
+
+        //this.updateBrands()
     }
 
     createSelectItems(){
@@ -186,6 +243,47 @@ class AddInventory extends React.Component{
         this.setState({department : event.target.value})
     }
 
+    categoryChange  =  async(event) => {
+
+        this.setState({type: event.target.value})
+        console.log("Category Change")
+
+        const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
+        await axios.get(LOCAL_HOST_URL_FIND_BRANDS+this.state.type)
+            .then(response => response.data)
+            .then(  (data) => {
+                this.setState( {filteredBrandList:data})
+            }).catch(error => {
+            alert(error)
+        })
+
+        this.updateBrands()
+    }
+
+    updateBrands =() => {
+        const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
+        axios.get(LOCAL_HOST_URL_FIND_BRANDS+this.state.type)
+            .then(response => response.data)
+            .then(  (data) => {
+                this.setState( {filteredBrandList:data})
+            }).catch(error => {
+            alert(error)
+        })
+    }
+
+    brandChange = (event) => {
+        event.preventDefault()
+        this.setState({category: event.target.value})
+    }
+
+    updateModels = () => {
+
+    }
+
+    modelChange = (event) => {
+
+    }
+
     /*change: function(event){
         this.setState({de})
 
@@ -213,7 +311,7 @@ class AddInventory extends React.Component{
         }
 
 
-        let axiosResponse = axios.get("http://localhost:8080/api/allDepartments")
+        /*let axiosResponse = axios.get("http://localhost:8080/api/allDepartments")
             .then( response => {
                 if(response.data != null){
                     Data = response.data;
@@ -231,7 +329,7 @@ class AddInventory extends React.Component{
         let Data =[],
             MakeItem= function (X){
                 return <option>{X}</option>
-            }
+            }*/
 
 
         const {assetId,serialNumber,location,department,brand,model,type,purchaseDate,warrantyMonths} = this.state;
@@ -341,15 +439,22 @@ class AddInventory extends React.Component{
                                 <Form.Row>
 
                                     <Form.Group controlId={"formType"} as={Col}>
-                                        <Form.Label>Equipment Type</Form.Label>
+                                        <Form.Label>Equipment Category</Form.Label>
                                         <Form.Control
                                             required as={"select"} name={'type'}
                                             defaultValue={"PC"}
                                             value={type}
-                                            onChange={this.equipmentChange.bind(this)}>
+                                            onChange={this.categoryChange.bind(this)}>
 
-                                            <option value={'PC'} datatype={'text'}>PC</option>
-                                            <option value={'Networking'}  datatype={'text'}>Networking</option>
+                                            {
+                                                this.state.categoryList.length === 0?
+                                                    <option>No Categories</option>:
+                                                    this.state.categoryList.map( (e) =>(
+                                                        <option  value={e.categoryName} datatype="text">
+                                                            {e.categoryName}
+                                                        </option>
+                                                    ))
+                                            }
 
                                         </Form.Control>
                                     </Form.Group>
@@ -358,12 +463,21 @@ class AddInventory extends React.Component{
                                     <Form.Label>Brand</Form.Label>
                                     <Form.Control
                                         required
-                                        type="text"
+                                        as={'select'}
                                         name={'brand'}
-                                        placeholder="Enter brand"
                                         value={brand}
-                                        onChange={this.equipmentChange}
-                                    />
+                                        onChange={this.brandChange.bind(this)}
+                                    >
+                                        {
+                                            this.state.filteredBrandList.length === 0?
+                                                <option>No Brands!!</option>:
+                                                this.state.filteredBrandList.map( (e) => (
+                                                    <option value={e.brandName}>{e.brandName}</option>
+                                                ))
+                                        }
+                                    </Form.Control>
+
+
                                 </Form.Group>
 
                                 <Form.Group controlId={"formModel"} as={Col}>
@@ -375,7 +489,9 @@ class AddInventory extends React.Component{
                                         placeholder="Enter Model"
                                         value={model}
                                         onChange={this.equipmentChange}
-                                    />
+                                    >
+
+                                    </Form.Control>
                                 </Form.Group>
 
 

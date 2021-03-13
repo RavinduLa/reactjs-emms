@@ -31,6 +31,7 @@ import BrandsFull from "./components/BrandsFull";
 import AddModels from "./components/AddModels";
 import ModelList from "./components/ModelList";
 import AddBrandsToCategories from "./components/AddBrandsToCategories";
+import CategoryBrandsList from "./components/CategoryBrandsList";
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
             <Route path="/addModels" exact component={AddModels} />
             <Route path="/modelList" exact component={ModelList} />
             <Route path="/addBrandsToCategories" exact component={AddBrandsToCategories} />
+            <Route path="/viewBrandForCategories" exact component={CategoryBrandsList} />
         </Switch>
 
         {/*<Container>
