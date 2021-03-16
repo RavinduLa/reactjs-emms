@@ -4,6 +4,7 @@ import axios from "axios";
 import Toast1 from "./Toast1";
 import Toast2 from "./Toast2";
 import async from "async";
+import * as Console from "console";
 
 
 class AddInventory extends React.Component{
@@ -33,6 +34,7 @@ class AddInventory extends React.Component{
         this.categoryChange = this.categoryChange.bind(this);
         this.modelChange = this.modelChange.bind(this);
         this.updateBrands = this.updateBrands.bind(this)
+        this.updateModels = this.updateModels.bind(this)
     }
 
     initialState = {
@@ -101,9 +103,21 @@ class AddInventory extends React.Component{
             .then(response => response.data)
             .then(  (data) => {
                 this.setState( {filteredBrandList:data})
+                this.setState( {brand: data[0].brandName})
             }).catch(error => {
             alert(error)
         })
+
+        const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
+        await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+            .then(response => response.data )
+            .then( (data) => {
+                this.setState( {filteredModelList: data})
+                this.setState( {model: data[0].model})
+            }).catch(error => {
+                alert("component mount find models error"+error)
+            })
+        //this.updateModels();
 
         /*console.log("Category List: "+ this.state.categoryList)
         await axios.get(LOCAL_HOST_URL_BRANDS)
@@ -245,6 +259,7 @@ class AddInventory extends React.Component{
 
     categoryChange  =  async(event) => {
 
+        event.preventDefault();
         this.setState({type: event.target.value})
         console.log("Category Change")
 
@@ -253,34 +268,80 @@ class AddInventory extends React.Component{
             .then(response => response.data)
             .then(  (data) => {
                 this.setState( {filteredBrandList:data})
+                this.setState( {brand: data[0].brandName})
             }).catch(error => {
-            alert(error)
+
+                //thrown error when returning to an category with brands
+                //after selecting a category without brands
+            console.log("error in category change find brands : "+error)
         })
 
-        this.updateBrands()
+        await this.updateBrands();
+
+        const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
+        await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+            .then(response => response.data )
+            .then( (data) => {
+                this.setState( {filteredModelList: data})
+                this.setState( {model: data[0].model})
+            }).catch(error => {
+                alert(error)
+            })
+
+        await this.updateModels();
+
+
     }
 
-    updateBrands =() => {
+    updateBrands =async() => {
         const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
-        axios.get(LOCAL_HOST_URL_FIND_BRANDS+this.state.type)
+        await axios.get(LOCAL_HOST_URL_FIND_BRANDS+this.state.type)
             .then(response => response.data)
             .then(  (data) => {
                 this.setState( {filteredBrandList:data})
+                this.setState( {brand: data[0].brandName})
             }).catch(error => {
-            alert(error)
+                //error thrown when selected a category without any brands
+                alert("System detected that no brands are registered for one or more categories." +
+                    "Please register brands for all categories.")
+            console.log("Error in update brands: "+error)
         })
     }
 
-    brandChange = (event) => {
+    brandChange = async(event) => {
         event.preventDefault()
-        this.setState({category: event.target.value})
+        this.setState({brand: event.target.value})
+        console.log("brand change");
+
+        const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
+        await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+            .then(response => response.data )
+            .then( (data) => {
+                this.setState( {filteredModelList: data})
+                //this.setState( {model: data[0].model})
+            }).catch(error => {
+                alert(error)
+        })
+        await this.updateModels();
+
     }
 
-    updateModels = () => {
+    updateModels = async() => {
+        const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
+        await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+            .then(response => response.data )
+            .then( (data) => {
+                this.setState( {filteredModelList: data})
+                this.setState( {model: data[0].model})
+            }).catch(error => {
+            console.log("Error in update models find models"+error)
+        })
 
     }
 
     modelChange = (event) => {
+        event.preventDefault();
+        this.setState({model: event.target.value})
 
     }
 
@@ -484,12 +545,19 @@ class AddInventory extends React.Component{
                                     <Form.Label>Model</Form.Label>
                                     <Form.Control
                                         required
-                                        type="text"
+                                        as={'select'}
                                         name={'model'}
-                                        placeholder="Enter Model"
                                         value={model}
-                                        onChange={this.equipmentChange}
+                                        onChange={this.modelChange.bind(this)}
                                     >
+
+                                        {
+                                            this.state.filteredModelList.length === 0?
+                                                <option>No Models!!</option>:
+                                                this.state.filteredModelList.map( (e) => (
+                                                    <option value={e.model}>{e.model}</option>
+                                                ))
+                                        }
 
                                     </Form.Control>
                                 </Form.Group>

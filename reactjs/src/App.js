@@ -64,6 +64,7 @@ function App() {
             <Route path="/modelList" exact component={ModelList} />
             <Route path="/addBrandsToCategories" exact component={AddBrandsToCategories} />
             <Route path="/viewBrandForCategories" exact component={CategoryBrandsList} />
+            <Route path="/addEquipmentCategory" exact component={AddEquipmentCategory} />
         </Switch>
 
         {/*<Container>
