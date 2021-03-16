@@ -352,12 +352,54 @@ class AddInventory extends React.Component{
 
     resetEquipment = () => {
         this.setState( () => this.initialState);
-        const LOCAL_HOST_URL = "http://localhost:8080/api/allDepartments";
-        axios.get(LOCAL_HOST_URL)
+        const LOCAL_HOST_URL_DEPARTMENTS = "http://localhost:8080/api/allDepartments";
+        const LOCAL_HOST_URL_CATEGORIES = "http://localhost:8080/api/allCategories";
+        const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
+        const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
+
+        axios.get(LOCAL_HOST_URL_DEPARTMENTS)
             .then( response => response.data)
             .then((data) => {
                 this.setState({deptList: data})
             });
+
+        axios.get(LOCAL_HOST_URL_CATEGORIES)
+            .then(response => response.data)
+            .then( (data) => {
+
+                console.log("Setting category list and type")
+                console.log("type: " + this.state.type)
+
+                this.setState({categoryList: data}  )
+                this.setState({type: data[0].categoryName}  )
+                //this.state.type = data[0].categoryName
+
+                console.log("type: " + this.state.type)
+
+            }).catch(error => {
+                alert(error)
+            });
+
+        axios.get(LOCAL_HOST_URL_FIND_BRANDS + this.state.type)
+            .then(response => response.data)
+            .then(  (data) => {
+                this.setState( {filteredBrandList:data})
+                this.setState( {brand: data[0].brandName})
+            }).catch(error => {
+                alert(error)
+            })
+
+        axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+            .then(response => response.data )
+            .then( (data) => {
+                this.setState( {filteredModelList: data})
+                this.setState( {model: data[0].model})
+            }).catch(error => {
+                alert("component mount find models error"+error)
+            })
+
+
+
     }
 
     toggleToastShow = () => {
