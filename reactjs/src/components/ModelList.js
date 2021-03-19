@@ -24,8 +24,9 @@ class ModelList extends React.Component{
 
     componentDidMount() {
         const URL_LOCALHOST = "http://localhost:8080/api/allModels";
+        const URL_ALL_MODELS = global.con + "/api/allModels";
 
-        axios.get(URL_LOCALHOST)
+        axios.get(URL_ALL_MODELS)
             .then(response => response.data)
             .then( (data) => {
                 this.setState( {models: data})
@@ -34,11 +35,12 @@ class ModelList extends React.Component{
 
     deleteModel = (modelId) => {
         const DELETE_LOCALHOST_URL = "http://localhost:8080/api/deleteModelById/";
+        const URL_DELETE_MODELS = global.con + "/api/deleteModelById/";
 
-        axios.delete(DELETE_LOCALHOST_URL+modelId)
+        axios.delete(URL_DELETE_MODELS+modelId)
             .then( response => {
                 if(response.data != null){
-                    this.setState({"shoe":true})
+                    this.setState({"show":true})
                     setTimeout(() => this.setState({"show" : false}),3000)
                     this.setState({
                         models: this.state.models.filter(models => models.modelId !== modelId)

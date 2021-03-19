@@ -21,30 +21,37 @@ class EquipmentCategoryList extends React.Component{
 
     componentDidMount() {
         const URL_LOCALHOST = "http://localhost:8080/api/allCategories";
+        const URL_ALL_CATEGORIES = global.con + "/api/allCategories";
 
-        axios.get(URL_LOCALHOST)
+        axios.get(URL_ALL_CATEGORIES)
             .then(response => response.data)
             .then((data) => {
                 this.setState({categories: data})
-            });
+            }).catch(error => {
+                alert("Error: could not get categories")
+        });
     }
 
     loadCategories = event =>{
         event.preventDefault()
         const URL_LOCALHOST = "http://localhost:8080/api/allCategories";
+        const URL_ALL_CATEGORIES = global.con + "/api/allCategories";
 
-        axios.get(URL_LOCALHOST)
+        axios.get(URL_ALL_CATEGORIES)
             .then(response => response.data)
             .then((data) => {
                 this.setState({categories: data})
-            })
+            }).catch(error => {
+                alert("Error: could not load categories\n"+error+"\nBackend server might be down")
+        })
     }
 
     deleteCategory = (categoryId) =>{
 
-        const URL_LOCALHOST = "http://localhost:8080/api/deleteCategoryById/"
+        const URL_LOCALHOST = "http://localhost:8080/api/deleteCategoryById/";
+        const URL_DELETE_CATEGORY = global.con + "/api/deleteCategoryById/"
 
-        axios.delete(URL_LOCALHOST+categoryId)
+        axios.delete(URL_DELETE_CATEGORY+categoryId)
             .then(response => {
                 if(response.data != null){
                     this.setState({"show" : true})
@@ -54,7 +61,9 @@ class EquipmentCategoryList extends React.Component{
                         categories: this.state.categories.filter(categories => categories.categoryName!== categoryId)
                     })
                 }
-            })
+            }).catch(error => {
+                alert("Error: Could not delete category\n"+error+"\nBackend server might be down")
+        })
     }
     //categoryId;
 

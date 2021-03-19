@@ -62,8 +62,10 @@ class InventoryList extends React.Component{
         const URL_LOCALHOST = "http://localhost:8080/api/equipment";
         const URLIP = "http://172.31.8.58:8080/api/equipment";
         const DELETE_LOCALHOST_URL = "http://localhost:8080/api/deleteEquipment/";
+        const URL_GET_EQUIPMENT = global.con + "/api/equipment";
+        const URL_DELETE_EQUIPMENT = global.con + "/api/deleteEquipment/";
 
-        axios.get(URL_LOCALHOST)
+        axios.get(URL_GET_EQUIPMENT)
             .then(response => response.data)
             .then((data) => {
                 this.setState({equipment: data})
@@ -89,8 +91,9 @@ class InventoryList extends React.Component{
         const URL_LOCALHOST = "http://localhost:8080/api/equipment";
         const URL_IP = "http://172.31.8.58:8080/api/equipment";
         const DELETE_LOCALHOST_URL = "http://localhost:8080/api/deleteEquipment/";
+        const URL_DELETE = global.con + "/api/deleteEquipment/"
 
-        axios.delete(DELETE_LOCALHOST_URL+assetId)
+        axios.delete(URL_DELETE+assetId)
             .then(response => {
                if(response.data != null){
                    //alert("Item deleted");

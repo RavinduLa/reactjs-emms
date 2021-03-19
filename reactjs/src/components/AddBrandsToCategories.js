@@ -29,6 +29,10 @@ class AddBrandsToCategories extends React.Component{
     componentDidMount() {
         const URL_LOCALHOST_BRANDS = "http://localhost:8080/api/allBrands"
         const URL_LOCALHOST_CATEGORIES = "http://localhost:8080/api/allCategories"
+
+        const URL_BRANDS = global.con + "/api/allBrands";
+        const URL_CATEGORIES = global.con + "/api/allCategories";
+
         axios.get(URL_LOCALHOST_BRANDS)
             .then( response => response.data)
             .then( (data) => {

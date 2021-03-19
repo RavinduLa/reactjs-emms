@@ -15,6 +15,7 @@ class CompletedJobCount extends React.Component{
 
     componentDidMount() {
         const LOCALHOST_URL =  "http://localHost:8080/api/completedJobCount";
+        const URL_COMPLETED_JOBS = global.con + "/api/completedJobCount"
         axios.get(LOCALHOST_URL)
             .then( response => response.data)
             .then( (data) => {

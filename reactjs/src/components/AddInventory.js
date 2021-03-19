@@ -69,7 +69,12 @@ class AddInventory extends React.Component{
         const LOCAL_HOST_URL_BRANDS = "http://localhost:8080/api/allBrands";
         const LOCAL_HOST_URL_MODELS = "http://localhost:8080/api/allModels";
 
-        await axios.get(LOCAL_HOST_URL_DEPARTMENTS)
+        const URL_DEPARTMENTS = global.con + "/api/allDepartments";
+        const URL_CATEGORIES = global.con + "/api/allCategories";
+        const URL_BRANDS = global.con + "/api/allBrands";
+        const URL_MODELS = global.con + "/api/allModels";
+
+        await axios.get(URL_DEPARTMENTS)
             .then( response => response.data)
             .then((data) =>{
 
@@ -77,10 +82,10 @@ class AddInventory extends React.Component{
                 this.setState({department: data[0].departmentName})
 
             }).catch(error => {
-                alert(error)
+                alert("Error in getting departments\n"+error+"\nBackend server might be down")
         });
 
-        await axios.get(LOCAL_HOST_URL_CATEGORIES)
+        await axios.get(URL_CATEGORIES)
             .then(response => response.data)
             .then( (data) => {
 
@@ -94,28 +99,30 @@ class AddInventory extends React.Component{
                 console.log("type: " + this.state.type)
 
             }).catch(error => {
-                alert(error)
+                alert("Error in getting categories\n"+error+"\nBackend server might be down")
         });
 
         const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
+        const URL_FIND_BRANDS = global.con + "/api/getBrandsForCategory";
         console.log("type before find brands : " + this.state.type)
-        await axios.get(LOCAL_HOST_URL_FIND_BRANDS + this.state.type)
+        await axios.get(URL_FIND_BRANDS + this.state.type)
             .then(response => response.data)
             .then(  (data) => {
                 this.setState( {filteredBrandList:data})
                 this.setState( {brand: data[0].brandName})
             }).catch(error => {
-            alert(error)
+                alert("Error in getting brands\n"+error+"\nBackend server might be down")
         })
 
         const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
+        const URL_FIND_MODELS = global.con + "/api/getModelsForBrand/"
         await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
             .then(response => response.data )
             .then( (data) => {
                 this.setState( {filteredModelList: data})
                 this.setState( {model: data[0].model})
             }).catch(error => {
-                alert("component mount find models error"+error)
+                alert("Error in getting models\n"+error+"\nBackend server might be down")
             })
         //this.updateModels();
 
@@ -138,13 +145,16 @@ class AddInventory extends React.Component{
         let items2= [];
         let items = [];
         const LOCAL_HOST_URL = "http://localhost:8080/api/allDepartments";
-        axios.get(LOCAL_HOST_URL)
+        const URL_ALL_DEPARTMENTS = global.con + "/api/allDepartments"
+        axios.get(URL_ALL_DEPARTMENTS)
             .then(response => {
                 if(response.data != null){
                     items2 = response.data;
 
                 }
-            })
+            }).catch(error => {
+            alert("Error in creating select items\n"+error+"\nBackend server might be down")
+        })
 
         for( let i = 0; i < items2.length; i++){
             items.push(<option key={i} value={i}>{i}</option>)
@@ -159,6 +169,7 @@ class AddInventory extends React.Component{
         event.preventDefault();
         const URLLocalHost = "http://localhost:8080/api/addEquipment";
         const URLIP = "http/192.168.12.9:8080/api/addEquipment";
+        const URL_ADD_EQUIPMENT = global.con + "/api/addEquipment";
 
         //creating a json object
         const equipment = {
@@ -183,7 +194,7 @@ class AddInventory extends React.Component{
             console.log("Id status: available");
 
             //console.log("Equipment: " + this.state.equipment.purchaseDate)
-            axios.post(URLLocalHost,equipment)
+            axios.post(URL_ADD_EQUIPMENT,equipment)
                 .then(response =>{
                     if(response.data != null){
                         this.setState({"show" : true})
@@ -195,8 +206,8 @@ class AddInventory extends React.Component{
                         this.setState({"show" : false})
                     }
                 })
-                .catch( (reject) => {
-                alert("rejected: " +reject);
+                .catch( (error) => {
+                alert("Error in Adding equipment \n"+error+"\nBackend server might be down")
             })
             //this.setState(this.initialState);
             //this.setState( () => this.initialState);
@@ -210,12 +221,13 @@ class AddInventory extends React.Component{
 
 
     isAssetIdAvailable = (status) =>{
+        const URL_CHECK_ID_AVAILABILITY = global.con + "/api/checkIdAvailability/"
         if(this.state.assetId == null){
             console.log("Asset id is null");
         }
         else {
             console.log("Asset id: " + this.state.assetId);
-            axios.get("http://localhost:8080/api/checkIdAvailability/"+this.state.assetId)
+            axios.get(URL_CHECK_ID_AVAILABILITY+this.state.assetId)
                 .then(response => {
                     if(response.data == true){
                         console.log("Id is not used");
@@ -231,7 +243,7 @@ class AddInventory extends React.Component{
                         return  false;
                     }
                 }).catch( (error) => {
-                alert("Error: "+ error)
+                alert("Error in checking asset sid availability\n"+error+"\nBackend server might be down")
             });
         }
 
@@ -264,13 +276,15 @@ class AddInventory extends React.Component{
         console.log("Category Change")
 
         const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
-        await axios.get(LOCAL_HOST_URL_FIND_BRANDS+this.state.type)
+        const URL_FIND_BRANDS = global.con + "/api/getBrandsForCategory/"
+        await axios.get(URL_FIND_BRANDS+this.state.type)
             .then(response => response.data)
             .then(  (data) => {
                 this.setState( {filteredBrandList:data})
                 this.setState( {brand: data[0].brandName})
             }).catch(error => {
 
+                alert("Error in changing category\n"+error+"\nBackend server might be down")
                 //thrown error when returning to an category with brands
                 //after selecting a category without brands
             console.log("error in category change find brands : "+error)
@@ -279,13 +293,14 @@ class AddInventory extends React.Component{
         await this.updateBrands();
 
         const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
-        await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+        const URL_FIND_MODELS = global.con + "/api/getModelsForBrand/"
+        await axios.get(URL_FIND_MODELS + this.state.brand)
             .then(response => response.data )
             .then( (data) => {
                 this.setState( {filteredModelList: data})
                 this.setState( {model: data[0].model})
             }).catch(error => {
-                alert(error)
+                alert("Error in updating brands\n"+error+"\nBackend server might be down")
             })
 
         await this.updateModels();
@@ -295,7 +310,8 @@ class AddInventory extends React.Component{
 
     updateBrands =async() => {
         const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
-        await axios.get(LOCAL_HOST_URL_FIND_BRANDS+this.state.type)
+        const URL_FIND_BRANDS = global.con + "/api/getBrandsForCategory/"
+        await axios.get(URL_FIND_BRANDS+this.state.type)
             .then(response => response.data)
             .then(  (data) => {
                 this.setState( {filteredBrandList:data})
@@ -314,13 +330,14 @@ class AddInventory extends React.Component{
         console.log("brand change");
 
         const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
-        await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+        const URL_FIND_MODELS = global.con + "/api/getModelsForBrand/"
+        await axios.get(URL_FIND_MODELS + this.state.brand)
             .then(response => response.data )
             .then( (data) => {
                 this.setState( {filteredModelList: data})
                 //this.setState( {model: data[0].model})
             }).catch(error => {
-                alert(error)
+                alert("Error in changing brands\n"+error+"\nBackend server might be down")
         })
         await this.updateModels();
 
@@ -328,12 +345,14 @@ class AddInventory extends React.Component{
 
     updateModels = async() => {
         const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
-        await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+        const URL_FIND_MODELS = global.con + "/api/getModelsForBrand/"
+        await axios.get(URL_FIND_MODELS + this.state.brand)
             .then(response => response.data )
             .then( (data) => {
                 this.setState( {filteredModelList: data})
                 this.setState( {model: data[0].model})
             }).catch(error => {
+                alert("Error in updating models\n"+error+"\nBackend server might be down")
             console.log("Error in update models find models"+error)
         })
 
@@ -357,13 +376,20 @@ class AddInventory extends React.Component{
         const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
         const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
 
-        axios.get(LOCAL_HOST_URL_DEPARTMENTS)
+        const URL_DEPARTMENTS = global.con + "/api/allDepartments";
+        const URL_CATEGORIES = global.con + "/api/allCategories";
+        const URL_FIND_BRANDS = global.con + "/api/getBrandsForCategory/";
+        const URL_FIND_MODELS = global.con + "/api/getModelsForBrand/";
+
+        axios.get(URL_DEPARTMENTS)
             .then( response => response.data)
             .then((data) => {
                 this.setState({deptList: data})
-            });
+            }).catch(error => {
+            alert("Error in getting departments in resetting\n"+error+"\nBackend server might be down")
+        });
 
-        axios.get(LOCAL_HOST_URL_CATEGORIES)
+        axios.get(URL_CATEGORIES)
             .then(response => response.data)
             .then( (data) => {
 
@@ -377,25 +403,27 @@ class AddInventory extends React.Component{
                 console.log("type: " + this.state.type)
 
             }).catch(error => {
-                alert(error)
+            alert("Error in getting categories in resetting\n"+error+"\nBackend server might be down")
             });
 
-        axios.get(LOCAL_HOST_URL_FIND_BRANDS + this.state.type)
+        axios.get(URL_FIND_BRANDS + this.state.type)
             .then(response => response.data)
             .then(  (data) => {
                 this.setState( {filteredBrandList:data})
                 this.setState( {brand: data[0].brandName})
             }).catch(error => {
                 alert(error)
-            })
+            }).catch(error => {
+            alert("Error in getting brands in resetting\n"+error+"\nBackend server might be down")
+        })
 
-        axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+        axios.get(URL_FIND_MODELS + this.state.brand)
             .then(response => response.data )
             .then( (data) => {
                 this.setState( {filteredModelList: data})
                 this.setState( {model: data[0].model})
             }).catch(error => {
-                alert("component mount find models error"+error)
+            alert("Error in getting models in resetting\n"+error+"\nBackend server might be down")
             })
 
 

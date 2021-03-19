@@ -83,7 +83,8 @@ class SingleEquipment extends React.Component{
         )
 
         const URL_LOCALHOST = "http://localhost:8080/api/getequipmentById/";
-        axios.get(URL_LOCALHOST+this.state.equipment)
+        const URL_GET_EQUIPMENT = global.con + "/api/getequipmentById/";
+        axios.get(URL_GET_EQUIPMENT+this.state.equipment)
             .then(response => response.data)
             .then((data) => {
                 this.setState({equipment: data})

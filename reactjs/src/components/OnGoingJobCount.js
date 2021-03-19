@@ -15,7 +15,8 @@ class OnGoingJobCount extends React.Component{
 
     componentDidMount() {
         const LOCALHOST_URL =  "http://localHost:8080/api/ongoingJobCount";
-        axios.get(LOCALHOST_URL)
+        const URL_ONGOINGJOBS = global.con + "/api/ongoingJobCount";
+        axios.get(URL_ONGOINGJOBS)
             .then( response => response.data)
             .then( (data) => {
                 this.setState( {onGoingJobCount: data});

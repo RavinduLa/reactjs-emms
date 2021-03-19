@@ -38,6 +38,7 @@ class AddEquipmentCategory extends React.Component{
     submitCategory  =  event =>{
         event.preventDefault();
         const URL_LOCALHOST_ADD = "http://localhost:8080/api/addCategory";
+        const URL_ADD_CATEGORY = global.con + "/api/addCategory"
 
         const category = {
             categoryName: this.state.categoryName
@@ -53,7 +54,7 @@ class AddEquipmentCategory extends React.Component{
 
             console.log("Category is available")
 
-            axios.post(URL_LOCALHOST_ADD,category)
+            axios.post(URL_ADD_CATEGORY,category)
                 .then(  response => {
                     console.log("post in then block")
                     if(response.data != null){
@@ -66,7 +67,7 @@ class AddEquipmentCategory extends React.Component{
                         this.setState({"show":false})
                     }
                 }).catch( (error) => {
-                alert("rejected: " +error);
+                alert("Error: could not add category\n" +error+"\nBackend server might be down.");
             })
 
 
@@ -87,7 +88,8 @@ class AddEquipmentCategory extends React.Component{
         }
         else{
             const URL_LOCALHOST = "http://localhost:8080/api/isCategoryAvailable/";
-            await axios.get(URL_LOCALHOST + this.state.categoryName)
+            const URL_CATEGORY_AVAILABLE = global.con + "/api/isCategoryAvailable/";
+            await axios.get(URL_CATEGORY_AVAILABLE + this.state.categoryName)
                 .then( response => {
                     if(response.data == true){
                         console.log("Category availability status set available");
@@ -103,7 +105,7 @@ class AddEquipmentCategory extends React.Component{
 
                     }
                 }).catch(error => {
-                    alert("Error in availability checking: "+error)
+                    alert("Error in availability checking: "+error +"\nBackend server might be down")
             })
         }
 

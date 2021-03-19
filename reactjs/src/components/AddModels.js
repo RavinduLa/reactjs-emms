@@ -32,6 +32,7 @@ class AddModels extends React.Component{
 
     componentDidMount() {
         const LOCAL_HOST_URL = "http://localhost:8080/api/allBrands";
+        const URL_ALL_BRANDS = global.con + "/api/allBrands"
         axios.get(LOCAL_HOST_URL)
             .then(response => response.data)
             .then((data) => {
@@ -47,6 +48,7 @@ class AddModels extends React.Component{
         event.preventDefault();
 
         const URLLocalHost = "http://localhost:8080/api/addModel";
+        const URL_ADD_MODELS = global.con + "/api/addModel";
 
         const model = {
             model: this.state.model,
@@ -56,7 +58,7 @@ class AddModels extends React.Component{
         this.isModelAvailable();
         if(this.state.modelAvailabilityStatus == 'available'){
             console.log("Model details" + model.modelId+ model.model)
-            axios.post(URLLocalHost, model)
+            axios.post(URL_ADD_MODELS, model)
                 .then(response => {
                     if (response.data != null){
                         this.setState({"show" : true})
@@ -83,7 +85,8 @@ class AddModels extends React.Component{
         }
         else{
             const URL_LOCALHOST = "http://localhost:8080/api/isModelAvailable/";
-            axios.get(URL_LOCALHOST+this.state.model)
+            const URL_CHECK_MODEL_AVAILABILITY =global.con + "/api/isModelAvailable/";
+            axios.get(URL_CHECK_MODEL_AVAILABILITY+this.state.model)
                 .then( response => {
                     if(response.data == true){
                         this.state.modelAvailabilityStatus = 'available'
@@ -106,7 +109,8 @@ class AddModels extends React.Component{
     resetModel = () => {
         this.setState( () => this.initialState);
         const LOCAL_HOST_URL = "http://localhost:8080/api/allBrands";
-        axios.get(LOCAL_HOST_URL)
+        const URL_ALL_BRANDS = global.con + "/api/allBrands";
+        axios.get(URL_ALL_BRANDS)
             .then( response => response.data)
             .then((data) => {
                 this.setState({brandList: data})

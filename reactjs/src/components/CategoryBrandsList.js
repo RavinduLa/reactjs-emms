@@ -23,12 +23,13 @@ class CategoryBrandsList extends React.Component{
 
     componentDidMount() {
         const LOCALHOST_URL_GET_ALL = "http://localhost:8080/api/allCategoryBrandCombinations"
-        axios.get(LOCALHOST_URL_GET_ALL)
+        const URL_GET_ALL_COMBINATIONS = global.con + "/api/allCategoryBrandCombinations";
+        axios.get(URL_GET_ALL_COMBINATIONS)
             .then(response => response.data)
             .then( (data) => {
                 this.setState( {comboList: data}  )
             }).catch(error => {
-                alert(error)
+                alert("Error: could not get combos\n"+error +"\nBackend server might be down.")
         })
     }
 
@@ -37,7 +38,8 @@ class CategoryBrandsList extends React.Component{
     deleteCombo = (id) => {
 
         const LOCAL_HOST_URL_DELETE = "http://localhost:8080/api/deleteBrandCategoryById/"
-        axios.delete(LOCAL_HOST_URL_DELETE+id)
+        const URL_DELETE_COMBO = global.con + "/api/deleteBrandCategoryById/"
+        axios.delete(URL_DELETE_COMBO+id)
             .then(response => {
                 if(response.data != null){
                     this.setState({"show":true})
@@ -46,7 +48,9 @@ class CategoryBrandsList extends React.Component{
                         comboList: this.state.comboList.filter(comboList => comboList.id !== id)
                     })
                 }
-            })
+            }).catch(error => {
+                alert("Error: could not delete combo \n" + error + "\nBackend server might be down")
+        })
 
     }
 

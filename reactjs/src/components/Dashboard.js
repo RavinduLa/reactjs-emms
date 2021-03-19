@@ -22,6 +22,7 @@ class Dashboard extends React.Component{
 
     componentDidMount() {
         const LOCALHOST_URL = "http://localhost:8080/api/assetCount";
+        const URL_GET_ASSET_COUNT = global.con + "/api/assetCount"
         axios.get(LOCALHOST_URL)
             .then(response => response.data)
             .then( (data)  => {

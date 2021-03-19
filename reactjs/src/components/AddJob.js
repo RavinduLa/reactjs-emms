@@ -25,6 +25,7 @@ class AddJob extends React.Component{
         event.preventDefault();
 
         const URLLocalHost = "http://localhost:8080/api/addJob";
+        const URL_ADD_JOB = global.con + "/api/addJob";
         const job = {
             assetId: this.state.assetId,
             serialNumber: this.state.serialNumber,
@@ -33,7 +34,7 @@ class AddJob extends React.Component{
 
         }
 
-        axios.post(URLLocalHost,job)
+        axios.post(URL_ADD_JOB,job)
             .then(response => {
                 if(response.data != null){
                     this.setState({"show" : true})

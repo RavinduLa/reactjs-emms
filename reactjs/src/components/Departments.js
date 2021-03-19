@@ -24,6 +24,7 @@ class Departments extends React.Component{
 
     componentDidMount() {
         const LOCALHOST_URL = "http://localhost:8080/api/allDepartments"
+        const URL_VIEW_ALL_DEPARTMENTS = global.con + "/api/allDepartments"
         axios.get(LOCALHOST_URL)
             .then( response => response.data)
             .then( (data)  => {
@@ -33,6 +34,7 @@ class Departments extends React.Component{
 
     deleteDepartment = (did) =>{
         const URL_LOCALHOST_DELETE = "http://localhost:8080/api/deleteDepartment/";
+        const URL_DELETE = global.con + "/api/deleteDepartment/"
 
         axios.delete(URL_LOCALHOST_DELETE+did)
             .then( response => {

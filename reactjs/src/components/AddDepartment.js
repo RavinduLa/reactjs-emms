@@ -36,7 +36,8 @@ class AddDepartment extends React.Component{
         this.isDidAvailable();
         if(this.state.idStatus == 'available'){
             const LOCALHOST_URL = "http://localhost:8080/api/addDepartment"
-            axios.post(LOCALHOST_URL,department)
+            const URL_ADD_DEPARTMENT = global.con + "/api/addDepartment"
+            axios.post(URL_ADD_DEPARTMENT,department)
                 .then( response => {
                     if(response.data != null){
                         this.setState({"show" : true})
@@ -46,8 +47,8 @@ class AddDepartment extends React.Component{
                         alert("Cannot add!")
                         this.setState({"show" : false})
                     }
-                }).catch( (reject) => {
-                alert("Error message: "+reject)
+                }).catch( (error) => {
+                alert("Error: Could not add department\n "+error + "\nBackend server might be down.")
             })
 
             //this.setState( () => this.initialState);
@@ -63,7 +64,8 @@ class AddDepartment extends React.Component{
 
     isDidAvailable(){
         const LOCALHOST_URL = "http://localhost:8080/api/getIdAvailability/"
-        axios.get(LOCALHOST_URL+this.state.did)
+        const GET_ID_AVAILABILITY = global.con + "/api/getIdAvailability/"
+        axios.get(GET_ID_AVAILABILITY+this.state.did)
             .then( response => {
                 if(response.data == true){
                     this.state.idStatus = 'available'
@@ -75,7 +77,9 @@ class AddDepartment extends React.Component{
                     this.state.idStatus = 'unavailable'
                     return false;
                 }
-            })
+            }).catch(error => {
+                alert("Error: Could not check id availability\n" + error+ "\nBackend server might be down")
+        })
 
     }
     departmentChange = event =>{

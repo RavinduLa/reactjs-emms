@@ -15,7 +15,8 @@ class PendingJobCount extends React.Component{
 
     componentDidMount() {
         const LOCALHOST_URL =  "http://localHost:8080/api/pendingJobCount";
-        axios.get(LOCALHOST_URL)
+        const URL_PENDING_JOBS = global.con + "/api/pendingJobCount";
+        axios.get(URL_PENDING_JOBS)
             .then( response => response.data)
             .then( (data) => {
                 this.setState( {pendingJobCount: data});
