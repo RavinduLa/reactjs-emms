@@ -16,7 +16,6 @@ const Modal1 = (e) => {
             <Modal isOpen={true}>
                 <h2>Modal Header</h2>
                 <p>Modal Body</p>
-
             </Modal>
         </div>
     )
@@ -262,7 +261,7 @@ class InventoryList extends React.Component{
 
 
                                         <td>
-                                            <Link to={{
+                                            {/*<Link to={{
                                                 pathname: '/singleEquipment',
                                                 data: {
                                                     assetId: e.assetId,
@@ -280,18 +279,18 @@ class InventoryList extends React.Component{
                                                 },
                                             }} >
                                                 View
-                                            </Link>
+                                            </Link>*/}
 
                                             <Button className={'btn btn-primary btn-sm'} onClick={this.alertItem.bind(this,e)}  >
-                                                Alert
+                                                View More Details
                                             </Button>
 
-                                            <Button className={'btn btn-secondary btn-sm'} onClick={this.viewSingleItem(e)}  >
+                                            {/*<Button className={'btn btn-secondary btn-sm'} onClick={this.viewSingleItem(e)}  >
                                                 Modal
-                                            </Button>
+                                            </Button>*/}
                                         </td>
 
-                                        <td>
+                                        {/*<td>
                                             <Link to={{
                                                 pathname: '/updateEquipment',
                                                 data: {
@@ -300,7 +299,7 @@ class InventoryList extends React.Component{
                                             }} >
                                                 Edit Item details
                                             </Link>
-                                        </td>
+                                        </td>*/}
 
                                         <td>
 

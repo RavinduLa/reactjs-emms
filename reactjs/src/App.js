@@ -37,6 +37,7 @@ import AddSupplier from "./components/AddSupplier";
 import IpSettings from "./components/IpSettings";
 
 import connectionData from './connection.json'
+import SupplierList from "./components/SupplierList";
 
 function App() {
 
@@ -90,7 +91,7 @@ function App() {
             <Route path="/addEquipmentCategory" exact component={AddEquipmentCategory} />
             <Route path="/suppliers" exact component={Suppliers} />
             <Route path="/addSupplier" exact component={AddSupplier} />
-            <Route path="/ipSettings" exact component={IpSettings} />
+            <Route path="/supplierList" exact component={SupplierList}/>
         </Switch>
 
         {/*<Container>

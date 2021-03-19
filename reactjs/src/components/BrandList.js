@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import Toast1 from "./Toast1";
 import {Button, Table} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {confirmAlert} from "react-confirm-alert";
 
 class BrandList extends React.Component{
 
@@ -52,6 +54,28 @@ class BrandList extends React.Component{
         });
     }
 
+    handleDeletion = (brandId) => {
+        confirmAlert({
+            title: 'Confirm Deletion',
+            message: 'Delete this item? ',
+            buttons: [
+                {
+                    label: 'Yes, Delete',
+                    onClick: this.deleteBrand.bind(this, brandId)
+                },
+                {
+                    label: 'No',
+                    //onClick: onclose
+                    onClick: this.displayCancelled.bind(this)
+                }
+            ]
+        })
+    }
+
+    displayCancelled(){
+        alert("Deletion cancelled")
+    }
+
     render() {
         return (
             <div>
@@ -62,6 +86,7 @@ class BrandList extends React.Component{
                             type: 'danger'}}/>
                 </div>
 
+                <Link to={'/addBrand'}>Add new brand</Link>
                 <Table striped bordered hover variant='light'>
                     <thead>
                         <tr>
@@ -82,7 +107,7 @@ class BrandList extends React.Component{
 
                                     <td>
                                         <Button
-                                            onClick={this.deleteBrand.bind(this,e.brandId)}
+                                            onClick={this.handleDeletion.bind(this,e.brandId)}
                                             className={'btn btn-danger'}>Delete</Button>
                                     </td>
                                 </tr>

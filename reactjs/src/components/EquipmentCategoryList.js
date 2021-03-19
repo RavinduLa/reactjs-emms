@@ -2,6 +2,8 @@ import React from "react";
 import Toast1 from "./Toast1";
 import {Button, Table} from "react-bootstrap";
 import axios from "axios";
+import {Link} from "react-router-dom";
+import {confirmAlert} from "react-confirm-alert";
 
 class EquipmentCategoryList extends React.Component{
 
@@ -58,7 +60,7 @@ class EquipmentCategoryList extends React.Component{
                     setTimeout(() => this.setState({"show" : false}),3000)
                     //categories: this.state.categories.filter(categories => categories.categoryId !== categoryId)
                     this.setState({
-                        categories: this.state.categories.filter(categories => categories.categoryName!== categoryId)
+                        categories: this.state.categories.filter(categories => categories.categoryId !== categoryId)
                     })
                 }
             }).catch(error => {
@@ -67,13 +69,37 @@ class EquipmentCategoryList extends React.Component{
     }
     //categoryId;
 
+    handleDelete = (categoryId) =>{
+
+        confirmAlert({
+            title: 'Confirm Deletion',
+            message: 'Delete this category? ',
+            buttons: [
+                {
+                    label: 'Yes, Delete',
+                    onClick: this.deleteCategory.bind(this, categoryId)
+                },
+                {
+                    label: 'No',
+                    //onClick: onclose
+                    onClick: this.displayCancelled.bind(this)
+                }
+            ]
+        })
+    }
+
+    displayCancelled(){
+        alert("Deletion Cancelled")
+    }
 
 
 
     render() {
         return (
+
             <div>
 
+                <Link to={'/addEquipmentCategory'}>Add new Category</Link>
                 <div style={{"display":this.state.show ? "block" :"none" }}>
                     <Toast1
                         children={{show:this.state.show,
@@ -81,7 +107,7 @@ class EquipmentCategoryList extends React.Component{
                             type: 'danger'}}/>
                 </div>
 
-                <Button onClick={this.loadCategories}>Load Categories</Button>
+                {/*<Button onClick={this.loadCategories}>Load Categories</Button>*/}
 
 
                 <Table striped bordered hover variant='light'>
@@ -103,7 +129,7 @@ class EquipmentCategoryList extends React.Component{
 
                                 <td>
                                     <Button
-                                        onClick={this.deleteCategory.bind(this,c.categoryId)}
+                                        onClick={this.handleDelete.bind(this,c.categoryId)}
                                         className={'btn btn-danger'}>
                                         Delete
                                     </Button>

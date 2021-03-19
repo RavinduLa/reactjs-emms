@@ -13,7 +13,7 @@ class Suppliers extends React.Component{
         return (
             <div>
                 <Link to={'/addSupplier'}>Add new Suppliers</Link>  <br/>
-
+                <Link to={'/supplierList'}>View Suppliers</Link>  <br/>
             </div>
         );
     }

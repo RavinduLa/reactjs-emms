@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import Toast1 from "./Toast1";
 import {Button, Table} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {confirmAlert} from "react-confirm-alert";
 
 class ModelList extends React.Component{
 
@@ -49,6 +51,30 @@ class ModelList extends React.Component{
             })
     }
 
+    handleDelete = (modelId) =>{
+
+        confirmAlert({
+            title: 'Confirm Deletion',
+            message: 'Delete this item? ',
+            buttons: [
+                {
+                    label: 'Yes, Delete',
+                    onClick: this.deleteModel.bind(this, modelId)
+                },
+                {
+                    label: 'No',
+                    //onClick: onclose
+                    onClick: this.displayCancelled.bind(this)
+                }
+            ]
+        })
+
+    }
+
+    displayCancelled (){
+        alert("Deletion Cancelled")
+    }
+
     render() {
         return (
             <div>
@@ -59,6 +85,7 @@ class ModelList extends React.Component{
                             type: 'danger'}}/>
                 </div>
 
+                <Link to={'/addModels'}>Register Models</Link>
 
                 <Table striped bordered hover variant='light'>
                     <thead>
@@ -81,7 +108,7 @@ class ModelList extends React.Component{
                                     <td>{e.brand}</td>
 
                                     <td>
-                                        <Button className={'btn btn-danger'} onClick={this.deleteModel.bind(this,e.modelId)}>
+                                        <Button className={'btn btn-danger'} onClick={this.handleDelete.bind(this,e.modelId)}>
                                             Delete
                                         </Button>
                                     </td>

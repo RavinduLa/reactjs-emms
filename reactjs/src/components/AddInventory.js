@@ -25,6 +25,7 @@ class AddInventory extends React.Component{
             filteredBrandList: [],
             filteredModelList: [],
             combinationList: [],
+            supplierList:[],
 
         }
         this.submitEquipment = this.submitEquipment.bind(this);
@@ -49,6 +50,8 @@ class AddInventory extends React.Component{
         warrantyMonths:'',
         idAvailabilityStatus: '',
         purchaseOrderNumber: '',
+        supplierName:'',
+        supplierId:'',
         ipAddress: '',
         workStationId: '',
 
@@ -59,7 +62,8 @@ class AddInventory extends React.Component{
         modelList: [],
         filteredBrandList: [],
         filteredModelList: [],
-        combinationList: []
+        combinationList: [],
+        supplierList:[]
     }
 
     async componentDidMount () {
@@ -73,6 +77,7 @@ class AddInventory extends React.Component{
         const URL_CATEGORIES = global.con + "/api/allCategories";
         const URL_BRANDS = global.con + "/api/allBrands";
         const URL_MODELS = global.con + "/api/allModels";
+        const URL_SUPPLIERS = global.con + "/api/allSuppliers/";
 
         await axios.get(URL_DEPARTMENTS)
             .then( response => response.data)
@@ -84,6 +89,13 @@ class AddInventory extends React.Component{
             }).catch(error => {
                 alert("Error in getting departments\n"+error+"\nBackend server might be down")
         });
+
+        await axios.get(URL_SUPPLIERS)
+            .then(response => response.data)
+            .then(  (data) => {
+                this.setState({supplierList: data})
+                this.setState( {supplierName : data[0].supplierName})
+            })
 
         await axios.get(URL_CATEGORIES)
             .then(response => response.data)
@@ -103,7 +115,7 @@ class AddInventory extends React.Component{
         });
 
         const LOCAL_HOST_URL_FIND_BRANDS = "http://localhost:8080/api/getBrandsForCategory/";
-        const URL_FIND_BRANDS = global.con + "/api/getBrandsForCategory";
+        const URL_FIND_BRANDS = global.con + "/api/getBrandsForCategory/";
         console.log("type before find brands : " + this.state.type)
         await axios.get(URL_FIND_BRANDS + this.state.type)
             .then(response => response.data)
@@ -183,6 +195,7 @@ class AddInventory extends React.Component{
             purchaseDate: this.state.purchaseDate,
             warrantyMonths: this.state.warrantyMonths,
             purchaseOrderNumber: this.state.purchaseOrderNumber,
+            supplier: this.state.supplierName,
             ipAddress: this.state.ipAddress,
             workStationId: this.state.workStationId,
         }
@@ -380,11 +393,20 @@ class AddInventory extends React.Component{
         const URL_CATEGORIES = global.con + "/api/allCategories";
         const URL_FIND_BRANDS = global.con + "/api/getBrandsForCategory/";
         const URL_FIND_MODELS = global.con + "/api/getModelsForBrand/";
+        const URL_FIND_SUPPLIERS = global.con + "/api/allSuppliers/";
 
         axios.get(URL_DEPARTMENTS)
             .then( response => response.data)
             .then((data) => {
                 this.setState({deptList: data})
+            }).catch(error => {
+            alert("Error in getting departments in resetting\n"+error+"\nBackend server might be down")
+        });
+
+        axios.get(URL_FIND_SUPPLIERS)
+            .then( response => response.data)
+            .then((data) => {
+                this.setState({supplierList: data})
             }).catch(error => {
             alert("Error in getting departments in resetting\n"+error+"\nBackend server might be down")
         });
@@ -463,7 +485,7 @@ class AddInventory extends React.Component{
             }*/
 
 
-        const {assetId,serialNumber,location,department,brand,model,type,purchaseDate,warrantyMonths} = this.state;
+        const {assetId,serialNumber,location,department,brand,model,type,purchaseDate,warrantyMonths,supplier} = this.state;
         return(
 
             <Container fluid>
@@ -634,6 +656,8 @@ class AddInventory extends React.Component{
 
 
 
+
+
                                 </Form.Row>
 
                                 <Form.Row>
@@ -675,6 +699,33 @@ class AddInventory extends React.Component{
                                         />
                                     </Form.Group>
 
+                                    <Form.Group controlId={"formModel"} as={Col}>
+                                        <Form.Label>Supplier</Form.Label>
+                                        <Form.Control
+                                            required
+                                            as={'select'}
+                                            name={'supplier'}
+                                            value={supplier}
+                                            onChange={this.modelChange.bind(this)}
+                                        >
+
+                                            {
+                                                this.state.supplierList.length === 0?
+                                                    <option>No Suppliers!!</option>:
+                                                    this.state.supplierList.map( (e) => (
+                                                        <option value={e.supplierName}>{e.supplierName}</option>
+                                                    ))
+                                            }
+
+                                        </Form.Control>
+                                    </Form.Group>
+
+
+
+
+                                </Form.Row>
+
+                                <Form.Row>
                                     <Form.Group controlId={"formIpAddress"} as={Col}>
                                         <Form.Label>IP address</Form.Label>
                                         <Form.Control
@@ -698,8 +749,6 @@ class AddInventory extends React.Component{
                                             onChange={this.equipmentChange}
                                         />
                                     </Form.Group>
-
-
                                 </Form.Row>
 
 
