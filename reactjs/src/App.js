@@ -32,8 +32,31 @@ import AddModels from "./components/AddModels";
 import ModelList from "./components/ModelList";
 import AddBrandsToCategories from "./components/AddBrandsToCategories";
 import CategoryBrandsList from "./components/CategoryBrandsList";
+import Suppliers from "./components/Suppliers";
+import AddSupplier from "./components/AddSupplier";
+import IpSettings from "./components/IpSettings";
+
+import connectionData from './connection.json'
 
 function App() {
+
+    const fs = require('fs')
+    const connectionFileName = __dirname + '/connectionConfig.txt'
+
+    global.ipa = 'localhost'
+
+    const   newCon = connectionData;
+    global.con = "http://"+newCon.ipAddress +":"+ newCon.port;
+
+    /*fs.readFile(connectionFileName, (err,data) => {
+        if(err){
+            console.log(err)
+        }
+
+        else {
+            global.ipa = data.toString();
+        }
+    })*/
 
   return (
     <Router >
@@ -41,7 +64,7 @@ function App() {
         <Header />
         <NavigationBar />
         <Switch>
-            <Route path="/" exact component={Welcome} />
+            <Route path="/" exact component={Welcome}/>
             <Route path="/inventory" exact component={Inventory} />
             <Route path="/addInventory" exact component={AddInventory} />
             <Route path="/singleEquipment" exact component={SingleEquipment} />
@@ -65,6 +88,9 @@ function App() {
             <Route path="/addBrandsToCategories" exact component={AddBrandsToCategories} />
             <Route path="/viewBrandForCategories" exact component={CategoryBrandsList} />
             <Route path="/addEquipmentCategory" exact component={AddEquipmentCategory} />
+            <Route path="/suppliers" exact component={Suppliers} />
+            <Route path="/addSupplier" exact component={AddSupplier} />
+            <Route path="/ipSettings" exact component={IpSettings} />
         </Switch>
 
         {/*<Container>

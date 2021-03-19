@@ -18,6 +18,7 @@ class Toast2 extends React.Component{
                         /*${this.props.children.type === "success" ? "bg-success":"bg-danger"}` */
                     }
                     show={this.props.children.show}
+                    onClose={this.props.children.show = false}
                 >
                     <Toast.Header className={
                         `"bg-warning" ${this.props.children.type === 'success' ?

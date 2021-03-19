@@ -22,20 +22,22 @@ class BrandList extends React.Component{
     componentDidMount() {
 
         const URL_LOCALHOST = "http://localhost:8080/api/allBrands";
+        const URL_VIEW_ALL_BRANDS = global.con + "/api/allBrands"
 
         axios.get(URL_LOCALHOST)
             .then(response => response.data)
             .then( (data) => {
                 this.setState( {brands : data})
             }).catch(error => {
-                alert(error)
+                alert("Error: cannot view brand list\n" + error+ "\nThe backend server might be down.")
         })
     }
 
     deleteBrand= (brandId) => {
         const DELETE_LOCALHOST_URL = "http://localhost:8080/api/deleteBrand/";
+        const DELETE_BRAND = global.con + "/api/deleteBrand/";
 
-        axios.delete(DELETE_LOCALHOST_URL+brandId)
+        axios.delete(DELETE_BRAND+brandId)
             .then(response => {
                 if(response.data != null){
                     this.setState({"show" : true})
@@ -46,7 +48,7 @@ class BrandList extends React.Component{
                         })
                 }
             }).catch(error => {
-                alert(error)
+                alert("Could not delete brand"+error+"The backend server might be down.")
         });
     }
 

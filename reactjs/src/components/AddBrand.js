@@ -31,6 +31,8 @@ class AddBrand extends React.Component{
     submitBrand = event =>{
         event.preventDefault();
         const URL_LOCALHOST_ADD = "http://localhost:8080/api/addBrand"
+        //getting api ip address by global variable
+        const URL_ADD = global.con + "/api/addBrand"
 
         const brand ={
             brandName: this.state.brandName
@@ -40,7 +42,7 @@ class AddBrand extends React.Component{
 
         if(this.state.brandAvailabilityStatus == 'available'){
             console.log("Brand is available")
-            axios.post(URL_LOCALHOST_ADD,brand)
+            axios.post(URL_ADD,brand)
                 .then(response => {
                     if(response.data !=  null){
                         this.resetBrand();
@@ -50,8 +52,8 @@ class AddBrand extends React.Component{
                     else {
                         this.setState({"show":false})
                     }
-                }).catch(reject => {
-                    alert("Rejected: "+reject)
+                }).catch(error => {
+                    alert("Error: cannot add brand"+error + "\nThe backend server might be down")
             })
 
             //this.resetBrand.bind(this)
@@ -69,7 +71,9 @@ class AddBrand extends React.Component{
         }
         else{
             const URL_LOCALHOST = "http://localhost:8080/api/isBrandAvailable/";
-            await axios.get(URL_LOCALHOST+this.state.brandName)
+            //getting api ip address by global variable
+            const URL_CHECK_AVAILABILITY = global.con + "/api/isBrandAvailable/";
+            await axios.get(URL_CHECK_AVAILABILITY+this.state.brandName)
                 .then( response => {
                     if(response.data ==  true){
                         console.log("Brand availability statue set available");
@@ -84,7 +88,7 @@ class AddBrand extends React.Component{
                         return  false;
                     }
                 }).catch(error => {
-                    alert(error)
+                    alert("Error: cannot check brand availability \n"+error + "\nThe backend server might be down")
             })
         }
 

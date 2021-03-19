@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Card, Container, Table, Col, Row} from "react-bootstrap";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 class SingleEquipment extends React.Component{
     constructor(props) {
@@ -9,12 +9,30 @@ class SingleEquipment extends React.Component{
 
         const {data} = this.props.location;
 
+        /*if(data == undefined){
+            return(
+                <Redirect to={'/inventory'} />
+            )
+        }*/
+
+        if(data == undefined){
+            //this.props.history.push('/inventory')
+            this.props.history.push('/inventory')
+            return(
+                <Redirect to={'/inventory'}/>
+            )
+        }
+
+
+
         this.setState(
             {equipment:
                     {
+
                         assetId: data.assetId,
                         serialNumber: data.serialNumber,
                         location: data.location,
+                        type: data.type,
                         brand: data.brand,
                         model: data.model,
                         purchaseDate: data.purchaseDate,
@@ -80,10 +98,15 @@ class SingleEquipment extends React.Component{
                     alert("Item deleted");
                 }
             });
+
+        this.props.history.push('/inventory')
     };
 
 
     render() {
+
+
+
         //const {data} = this.props.location;
         const padding = {
             padding:'40px'
@@ -95,8 +118,93 @@ class SingleEquipment extends React.Component{
                     <Card.Header><Card.Title>Asset ID: {this.state.equipment.assetId}</Card.Title></Card.Header>
                     <Card.Body>
 
+                        <Row>
+                            <Col>
+                                <Table striped bordered hover variant='light'>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>Serial Number</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.serialNumber}</Card.Text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>Location</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.location}</Card.Text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>Brand</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.brand}</Card.Text>
+                                        </td>
+                                    </tr>
 
-                        <Table striped bordered hover variant='light'>
+
+                                    </tbody>
+
+                                </Table>
+                            </Col>
+
+                            <Col>
+                                <Table striped bordered hover variant='light'>
+                                    <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>Model</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.model}</Card.Text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>Purchase Date</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.purchaseDate}</Card.Text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>Warranty Months</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.warrantyMonths}</Card.Text>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </Table>
+
+
+                            </Col>
+
+                            <Col>
+                                <Table striped bordered hover variant='light'>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>IP address</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.ipAddress}</Card.Text>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>Purchase Order Number</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.purchaseOrderNumber}</Card.Text>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <Card.Subtitle>Workstation Id</Card.Subtitle>
+                                            <Card.Text>{this.state.equipment.workStationId}</Card.Text>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </Table>
+                            </Col>
+                        </Row>
+
+                        {/*<Table striped bordered hover variant='light'>*/}{/*
                             <tbody>
                             <tr>
                                 <td>
@@ -157,12 +265,12 @@ class SingleEquipment extends React.Component{
                             </tr>
 
                             </tbody>
-                        </Table>
+                        */}
 
                     </Card.Body>
 
                     <Card.Footer>
-                        <Row>
+                        {/*<Row>
                         <Col>
                             <Button onClick=
                                         {this.deleteItem.bind(this,this.state.equipment.assetId)}
@@ -174,7 +282,7 @@ class SingleEquipment extends React.Component{
                             <Link to={"/EditEquipment"}  className={'btn btn-warning'}>Update Item in inventory</Link>
                         </Col>
 
-                        </Row>
+                        </Row>*/}
 
 
                     </Card.Footer>

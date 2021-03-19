@@ -153,7 +153,10 @@ class AddBrandsToCategories extends React.Component{
                         </Form.Group>
                     </Form.Row>
 
-                    <Button type={'submit'} className={'btn btn-secondary'}>Add Combination</Button>
+                    <Form.Row>
+                        <Button type={'submit'} className={'btn btn-secondary'}>Add Combination</Button>
+                    </Form.Row>
+
 
                 </Form>
             </div>

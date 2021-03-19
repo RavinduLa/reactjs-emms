@@ -23,6 +23,9 @@ class Admin extends React.Component{
                 <Link to={'/brandsFull'}>Brands Full</Link>  <br/>
                 <Link to={'/addModels'}>Add Models</Link>  <br/>
                 <Link to={'/modelList'}>Model list</Link>  <br/>
+                <Link to={'/suppliers'}>Suppliers</Link>  <br/>
+                <Link to={'/ipSettings'}>IP Settings</Link>  <br/>
+
             </div>
         );
     }
