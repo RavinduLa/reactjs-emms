@@ -123,9 +123,12 @@ class AddEquipmentCategory extends React.Component{
     }
 
     render() {
+        const padding={
+            padding:'20px'
+        }
         const {categoryName} = this.state;
         return (
-            <div>
+            <div style={padding}>
 
                 <div style={{"display":this.state.show ? "block" :"none" }}>
                     <Toast1
@@ -164,8 +167,18 @@ class AddEquipmentCategory extends React.Component{
                         </Form.Group>
                     </Form.Row>
 
-                    <Button type={'submit'} className={'btn btn-success'}>Submit</Button>
-                    <Button type={'reset'} className={'btn btn-info'}>Clear</Button>
+                    <Form.Row>
+                        <Form.Group as={Col}>
+                            <Button type={'submit'} className={'btn btn-success'}>Submit</Button>
+                        </Form.Group>
+
+                        <Form.Group as={Col}>
+                            <Button type={'reset'} className={'btn btn-info'}>Clear</Button>
+                        </Form.Group>
+                    </Form.Row>
+
+
+
 
                 </Form>
 

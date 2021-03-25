@@ -107,8 +107,11 @@ class AddSupplier extends React.Component{
 
     render() {
         const {supplierName,phone,email} = this.state;
+        const padding={
+            padding:'20px'
+        }
         return (
-            <div>
+            <div style={padding}>
 
                 <div style={{"display":this.state.show ? "block" :"none" }}>
                     <Toast1
@@ -163,6 +166,9 @@ class AddSupplier extends React.Component{
                     <Form.Row>
                         <Form.Group as={Col}>
                             <Button type={'submit'} className={'btn btn-success'}>Submit</Button>
+                        </Form.Group>
+
+                        <Form.Group as={Col}>
                             <Button type={'reset'} className={'btn btn-info'}>Reset</Button>
                         </Form.Group>
                     </Form.Row>

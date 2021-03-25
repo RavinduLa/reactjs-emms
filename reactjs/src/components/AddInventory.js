@@ -95,6 +95,7 @@ class AddInventory extends React.Component{
             .then(  (data) => {
                 this.setState({supplierList: data})
                 this.setState( {supplierName : data[0].supplierName})
+                this.setState( {supplierId : data[0].supplierId})
             })
 
         await axios.get(URL_CATEGORIES)
@@ -128,7 +129,7 @@ class AddInventory extends React.Component{
 
         const LOCAL_HOST_FIND_MODELS = "http://localhost:8080/api/getModelsForBrand/";
         const URL_FIND_MODELS = global.con + "/api/getModelsForBrand/"
-        await axios.get(LOCAL_HOST_FIND_MODELS + this.state.brand)
+        await axios.get(URL_FIND_MODELS + this.state.brand)
             .then(response => response.data )
             .then( (data) => {
                 this.setState( {filteredModelList: data})
@@ -195,7 +196,8 @@ class AddInventory extends React.Component{
             purchaseDate: this.state.purchaseDate,
             warrantyMonths: this.state.warrantyMonths,
             purchaseOrderNumber: this.state.purchaseOrderNumber,
-            supplier: this.state.supplierName,
+            //supplier: this.state.supplierName,
+            supplier:this.state.supplierId,
             ipAddress: this.state.ipAddress,
             workStationId: this.state.workStationId,
         }
@@ -375,6 +377,11 @@ class AddInventory extends React.Component{
         event.preventDefault();
         this.setState({model: event.target.value})
 
+    }
+
+    supplierChange = (event) => {
+        event.preventDefault();
+        this.setState({supplierId: event.target.value})
     }
 
     /*change: function(event){
@@ -706,14 +713,14 @@ class AddInventory extends React.Component{
                                             as={'select'}
                                             name={'supplier'}
                                             value={supplier}
-                                            onChange={this.modelChange.bind(this)}
+                                            onChange={this.supplierChange.bind(this)}
                                         >
 
                                             {
                                                 this.state.supplierList.length === 0?
                                                     <option>No Suppliers!!</option>:
                                                     this.state.supplierList.map( (e) => (
-                                                        <option value={e.supplierName}>{e.supplierName}</option>
+                                                        <option value={e.supplierId}>{e.supplierName}</option>
                                                     ))
                                             }
 

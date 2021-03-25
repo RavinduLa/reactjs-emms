@@ -63,6 +63,7 @@ class InventoryList extends React.Component{
         const DELETE_LOCALHOST_URL = "http://localhost:8080/api/deleteEquipment/";
         const URL_GET_EQUIPMENT = global.con + "/api/equipment";
         const URL_DELETE_EQUIPMENT = global.con + "/api/deleteEquipment/";
+        //const URL_GET_SUPPLIERS = global.con + "";
 
         axios.get(URL_GET_EQUIPMENT)
             .then(response => response.data)
@@ -194,8 +195,8 @@ class InventoryList extends React.Component{
     alertItem = (e) => {
         alert("Asset Id : "+e.assetId+""+ "\n"+"Serial Number: " + e.serialNumber + "\n"+
         "Location : "+ e.location + "\n"+ "Department: " + e.department+ "\n"+"Category: "+ e.type+ "\n"+
-        "Brand: "+e.brand+ "\n" + "Model: "+ e.model + "Purchase Date: " + e.purchaseDate + "\n"+
-        "Warranty Months: "+e.warrantyMonths + "\n"+ "IP Address; "+e.ipAddress + "\n" +
+        "Brand: "+e.brand+ "\n" + "Model: "+ e.model + "\nPurchase Date: " + e.purchaseDate + "\n"+
+        "Warranty Months: "+e.warrantyMonths +"\nSupplier: "+e.supplier+"\nSupplier Name: " + e.supplierName+ "\n"+ "IP Address; "+e.ipAddress + "\n" +
         "Purchase order Number: "+ e.purchaseOrderNumber + "\n"+ "Workstation Id: "+e.workStationId)
     }
 
