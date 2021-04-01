@@ -250,7 +250,8 @@ class InventoryList extends React.Component{
                                         <td>{e.assetId}</td>
                                         <td>{e.serialNumber}</td>
                                         <td>{e.location}</td>
-                                        <td>{e.department}</td>
+                                        {/*<td>{e.department}</td>*/}
+                                        <td>{e.departmentName}</td>
                                         <td>{e.brand}</td>
                                         <td>{e.model}</td>
                                         {/*<td>{e.purchaseDate}</td>

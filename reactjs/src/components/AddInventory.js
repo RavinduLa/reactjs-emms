@@ -43,6 +43,8 @@ class AddInventory extends React.Component{
         serialNumber:'',
         location:'',
         department:'',
+        departmentName:'',
+        departmentId:'',
         brand:'',
         model:'',
         type:'',
@@ -85,6 +87,8 @@ class AddInventory extends React.Component{
 
                 this.setState({deptList: data})
                 this.setState({department: data[0].departmentName})
+                //this.setState({departmentId: data[0].did})
+                this.setState({departmentName: data[0].departmentName})
 
             }).catch(error => {
                 alert("Error in getting departments\n"+error+"\nBackend server might be down")
@@ -189,7 +193,8 @@ class AddInventory extends React.Component{
             assetId: this.state.assetId,
             serialNumber: this.state.serialNumber,
             location: this.state.location,
-            department: this.state.department,
+            //department: this.state.department,
+            department: this.state.departmentId,
             brand: this.state.brand,
             model: this.state.model,
             type: this.state.type,
@@ -492,7 +497,8 @@ class AddInventory extends React.Component{
             }*/
 
 
-        const {assetId,serialNumber,location,department,brand,model,type,purchaseDate,warrantyMonths,supplier} = this.state;
+        const {assetId,serialNumber,location,
+            department,departmentId, departmentName,brand,model,type,purchaseDate,warrantyMonths,supplier} = this.state;
         return(
 
             <Container fluid>
@@ -583,7 +589,7 @@ class AddInventory extends React.Component{
                                                 this.state.deptList.length === 0?
                                                     <option>No depts</option>:
                                                     this.state.deptList.map( (e) =>(
-                                                        <option  value={e.departmentName} datatype="text">
+                                                        <option  value={e.departmentId} datatype="text">
                                                             {e.departmentName}
                                                         </option>
                                                     ))
