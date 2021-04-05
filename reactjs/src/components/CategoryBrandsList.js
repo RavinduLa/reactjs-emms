@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Toast1 from "./Toast1";
 import {Button, Table} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 class CategoryBrandsList extends React.Component{
     constructor(props) {
@@ -57,6 +58,7 @@ class CategoryBrandsList extends React.Component{
     render() {
         return (
             <div>
+                <Link to={'/addBrandsToCategories'}>Category and Brands</Link> <br/>
 
                 <div style={{"display":this.state.show ? "block" :"none" }}>
                     <Toast1

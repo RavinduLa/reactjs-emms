@@ -11,6 +11,7 @@ class EquipmentConfiguration extends React.Component{
                 <Link to={'/equipmentCategoryList'}>Equipment Categories</Link>  <br/>
                 <Link to={'/brandList'}>Equipment Brands</Link> <br/>
                 <Link to={'/modelList'}>Equipment Models</Link> <br/>
+                <Link to={'/viewBrandForCategories'}>Category and Brands</Link> <br/>
             </div>
         );
     }

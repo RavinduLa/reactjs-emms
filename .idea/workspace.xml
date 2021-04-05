@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/reactjs/src/components/Toast2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reactjs/src/components/images/Ceylon_Petroleum_Corporation_logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/CategoryBrandsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/CategoryBrandsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/EquipmentConfiguration.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/EquipmentConfiguration.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reactjs/src/components/InventoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/InventoryList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/SingleEquipment.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/SingleEquipment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Toast1.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Toast1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Welcome.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ouuMyr3jSYxdjt82D5lZqcXtXK" />
@@ -38,7 +39,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/WebstormProjects/Lab2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Lab2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,6 +59,16 @@
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/reactjs/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="npm start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/reactjs/package.json" />
       <command value="run" />
@@ -68,6 +79,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -84,6 +100,11 @@
       <workItem from="1614573214750" duration="1041000" />
       <workItem from="1614579361440" duration="3704000" />
       <workItem from="1614585486277" duration="7169000" />
+      <workItem from="1617594168452" duration="67000" />
+      <workItem from="1617594248283" duration="593000" />
+      <workItem from="1617594857282" duration="49000" />
+      <workItem from="1617594916805" duration="728000" />
+      <workItem from="1617595660784" duration="6576000" />
     </task>
     <servers />
   </component>
