@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/CategoryBrandsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/CategoryBrandsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/EquipmentConfiguration.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/EquipmentConfiguration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/InventoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/InventoryList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/NavigationBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,8 +101,17 @@
       <workItem from="1617594248283" duration="593000" />
       <workItem from="1617594857282" duration="49000" />
       <workItem from="1617594916805" duration="728000" />
-      <workItem from="1617595660784" duration="6576000" />
+      <workItem from="1617595660784" duration="10139000" />
+      <workItem from="1617609906639" duration="2274000" />
     </task>
+    <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
+      <created>1617602737021</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1617602737021</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,11 +122,27 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="branchHp" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Edited the department selection in adding inventory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited the department selection in adding inventory" />
   </component>
 </project>

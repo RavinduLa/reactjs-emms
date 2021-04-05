@@ -17,8 +17,8 @@ class NavigationBar extends React.Component{
                     <Link to={"/dashboard-admin"} className='nav-link'>Dashboard</Link>
                     <Link to={"/inventory"} className='nav-link'>Inventory</Link>
                     <Link to={"/maintenance"} className='nav-link'>Maintenance</Link>
-                    <Link to={"/departments"} className='nav-link'>Departments</Link>
-                    <Link to={"/testForm"} className='nav-link'>Test</Link>
+                    {/*<Link to={"/departments"} className='nav-link'>Departments</Link>
+                    <Link to={"/testForm"} className='nav-link'>Test</Link>*/}
                     <Link to={"/admin"} className='nav-link'>Admin</Link>
                 </Nav>
 
