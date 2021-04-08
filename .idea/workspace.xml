@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Edited navbar items. Moved department link to admin page.">
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Adjusted functionality of connection.json to access from public folder.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/public/connection.json" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/public/connection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +109,9 @@
       <workItem from="1617697647946" duration="3723000" />
       <workItem from="1617703311629" duration="2841000" />
       <workItem from="1617712519044" duration="5060000" />
+      <workItem from="1617763550358" duration="1280000" />
+      <workItem from="1617790169782" duration="685000" />
+      <workItem from="1617853223103" duration="2712000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
@@ -126,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617612695442</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Adjusted functionality of connection.json to access from public folder.">
+      <created>1617763842198</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617763842198</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +167,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Edited the department selection in adding inventory" />
     <MESSAGE value="Edited navbar items. Moved department link to admin page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited navbar items. Moved department link to admin page." />
+    <MESSAGE value="Adjusted functionality of connection.json to access from public folder." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusted functionality of connection.json to access from public folder." />
   </component>
 </project>
