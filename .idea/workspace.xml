@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Adjusted functionality of connection.json to access from public folder.">
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="required commit for workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +111,7 @@
       <workItem from="1617712519044" duration="5060000" />
       <workItem from="1617763550358" duration="1280000" />
       <workItem from="1617790169782" duration="685000" />
-      <workItem from="1617853223103" duration="2712000" />
+      <workItem from="1617853223103" duration="4471000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
@@ -134,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617763842198</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="required commit for workspace.xml">
+      <created>1617858765875</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617858765875</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +175,7 @@
     <MESSAGE value="Edited the department selection in adding inventory" />
     <MESSAGE value="Edited navbar items. Moved department link to admin page." />
     <MESSAGE value="Adjusted functionality of connection.json to access from public folder." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted functionality of connection.json to access from public folder." />
+    <MESSAGE value="required commit for workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="required commit for workspace.xml" />
   </component>
 </project>
