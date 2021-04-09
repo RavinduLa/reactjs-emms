@@ -2,6 +2,8 @@
 import './App.css';
 import NavigationBar from './components/NavigationBar';
 
+import React, { useState, useEffect } from 'react';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 
@@ -42,12 +44,33 @@ import SupplierList from "./components/SupplierList";
 function App() {
 
     const fs = require('fs')
-    const connectionFileName = __dirname + '/connectionConfig.txt'
+    //const connectionFileName = __dirname + '/connectionConfig.txt'
 
     global.ipa = 'localhost'
 
     const   newCon = connectionData;
-    global.con = "http://"+newCon.ipAddress +":"+ newCon.port;
+
+
+    const [connection, setConnection] = useState('');
+
+
+    //useEffect is equivalent to using lifecycle methods in a class based component
+    //it is like we are using componentDidMount/Update
+    //by passing an array of connections as the second arguement, this only rerenders after connection value is changed.
+    //without useEffect, performance issues were encountered.
+
+    useEffect(() => {
+        fetch('connection.json').then(response => {
+            response.json().then(con => {
+                setConnection(con);
+            })
+        })
+
+        //console.log("Connection IP: " + connection.ipAddress + "Port: "+ connection.port);
+    },[connection])
+
+    //this sets the global variable accessed by all other components for the url.
+    global.con = "http://"+connection.ipAddress +":"+ connection.port;
 
     /*fs.readFile(connectionFileName, (err,data) => {
         if(err){

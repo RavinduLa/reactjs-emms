@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/reactjs/src/components/Toast2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reactjs/src/components/images/Ceylon_Petroleum_Corporation_logo.png" afterDir="false" />
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="required commit for workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/InventoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/InventoryList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/SingleEquipment.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/SingleEquipment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Toast1.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Toast1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Welcome.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +17,15 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1ouuMyr3jSYxdjt82D5lZqcXtXK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,7 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/WebstormProjects/Lab2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -51,11 +50,22 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\WebstormProjects\reactjs-emms" />
       <recent name="C:\Users\Ravindu\Documents\Spring-Workspace\EMMS-Backend\src\main\webapp\reactjs\src\components\images" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/reactjs/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
       <method v="2" />
     </configuration>
     <configuration name="npm start" type="js.build_tools.npm">
@@ -68,6 +78,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -84,7 +99,49 @@
       <workItem from="1614573214750" duration="1041000" />
       <workItem from="1614579361440" duration="3704000" />
       <workItem from="1614585486277" duration="7169000" />
+      <workItem from="1617594168452" duration="67000" />
+      <workItem from="1617594248283" duration="593000" />
+      <workItem from="1617594857282" duration="49000" />
+      <workItem from="1617594916805" duration="728000" />
+      <workItem from="1617595660784" duration="10139000" />
+      <workItem from="1617609906639" duration="2741000" />
+      <workItem from="1617689046761" duration="1638000" />
+      <workItem from="1617697647946" duration="3723000" />
+      <workItem from="1617703311629" duration="2841000" />
+      <workItem from="1617712519044" duration="5060000" />
+      <workItem from="1617763550358" duration="1280000" />
+      <workItem from="1617790169782" duration="685000" />
+      <workItem from="1617853223103" duration="4471000" />
     </task>
+    <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
+      <created>1617602737021</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1617602737021</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Edited navbar items. Moved department link to admin page.">
+      <created>1617612695442</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617612695442</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adjusted functionality of connection.json to access from public folder.">
+      <created>1617763842198</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617763842198</updated>
+    </task>
+    <task id="LOCAL-00004" summary="required commit for workspace.xml">
+      <created>1617858765875</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1617858765875</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,11 +152,30 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="branchHp" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Edited the department selection in adding inventory" />
+    <MESSAGE value="Edited navbar items. Moved department link to admin page." />
+    <MESSAGE value="Adjusted functionality of connection.json to access from public folder." />
+    <MESSAGE value="required commit for workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="required commit for workspace.xml" />
   </component>
 </project>

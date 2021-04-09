@@ -17,6 +17,7 @@ class Admin extends React.Component{
             <div>
                 <Link to={'/equipmentConfiguration'}>Equipment Configurations</Link> <br/>
                 <Link to={'/suppliers'}>Suppliers</Link>  <br/>
+                <Link to={"/departments"} >Departments</Link>
 
 
                 {/*<Link to={'/addEquipmentCategory'}>Add Categories</Link> <br/>

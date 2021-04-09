@@ -86,7 +86,9 @@ class AddInventory extends React.Component{
             .then((data) =>{
 
                 this.setState({deptList: data})
-                this.setState({department: data[0].departmentName})
+                this.setState({department: data[0].did})
+                console.log("Department id  received: " + data[0].did)
+                console.log("Department id stored: " + this.state.department)
                 //this.setState({departmentId: data[0].did})
                 this.setState({departmentName: data[0].departmentName})
 
@@ -194,7 +196,7 @@ class AddInventory extends React.Component{
             serialNumber: this.state.serialNumber,
             location: this.state.location,
             //department: this.state.department,
-            department: this.state.departmentId,
+            department: this.state.department,
             brand: this.state.brand,
             model: this.state.model,
             type: this.state.type,
@@ -580,7 +582,7 @@ class AddInventory extends React.Component{
                                         <Form.Label>Department</Form.Label>
                                         <Form.Control
                                              as={"select"} required name={'department'}
-                                            defaultValue={"IT"}
+                                            defaultValue={"ITDef"}
                                             value={department}
                                             onChange={this.departmentChange.bind(this)}>
 
@@ -589,7 +591,7 @@ class AddInventory extends React.Component{
                                                 this.state.deptList.length === 0?
                                                     <option>No depts</option>:
                                                     this.state.deptList.map( (e) =>(
-                                                        <option  value={e.departmentId} datatype="text">
+                                                        <option  value={e.did} datatype="text">
                                                             {e.departmentName}
                                                         </option>
                                                     ))
