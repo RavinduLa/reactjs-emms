@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="required commit for workspace.xml">
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="edited gitignoregit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/public/connection.json" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/public/connection.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +112,10 @@
       <workItem from="1617712519044" duration="5060000" />
       <workItem from="1617763550358" duration="1280000" />
       <workItem from="1617790169782" duration="685000" />
-      <workItem from="1617853223103" duration="4471000" />
+      <workItem from="1617853223103" duration="4810000" />
+      <workItem from="1617863918183" duration="756000" />
+      <workItem from="1617948598204" duration="238000" />
+      <workItem from="1617949359171" duration="67000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
@@ -141,7 +145,28 @@
       <option name="project" value="LOCAL" />
       <updated>1617858765875</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="edited gitignore">
+      <created>1617861817331</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617861817331</updated>
+    </task>
+    <task id="LOCAL-00006" summary="gitignore">
+      <created>1617863963594</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617863963594</updated>
+    </task>
+    <task id="LOCAL-00007" summary="tag created">
+      <created>1617864355990</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617864355990</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +201,9 @@
     <MESSAGE value="Edited navbar items. Moved department link to admin page." />
     <MESSAGE value="Adjusted functionality of connection.json to access from public folder." />
     <MESSAGE value="required commit for workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="required commit for workspace.xml" />
+    <MESSAGE value="edited gitignore" />
+    <MESSAGE value="gitignore" />
+    <MESSAGE value="tag created" />
+    <option name="LAST_COMMIT_MESSAGE" value="tag created" />
   </component>
 </project>
