@@ -533,7 +533,7 @@ class AddInventory extends React.Component{
                     <Card className={'border border-dark bg-light'}>
                         <Card.Header>Add Item to Inventory</Card.Header>
 
-                        <Form onReset={this.resetEquipment.bind(this)} id={'addNewInventoryForm'}
+                            <Form onReset={this.resetEquipment.bind(this)} id={'addNewInventoryForm'}
                               onSubmit={this.submitEquipment.bind(this)}>
                             <Card.Body>
                                 <Form.Row>

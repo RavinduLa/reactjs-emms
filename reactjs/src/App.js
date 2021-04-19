@@ -40,6 +40,7 @@ import IpSettings from "./components/IpSettings";
 
 import connectionData from './connection.json'
 import SupplierList from "./components/SupplierList";
+import InventoryLanding from "./components/InventoryLanding";
 
 function App() {
 
@@ -115,6 +116,7 @@ function App() {
             <Route path="/suppliers" exact component={Suppliers} />
             <Route path="/addSupplier" exact component={AddSupplier} />
             <Route path="/supplierList" exact component={SupplierList}/>
+            <Route path="/inventoryLanding" exact component={InventoryLanding}/>
         </Switch>
 
         {/*<Container>
