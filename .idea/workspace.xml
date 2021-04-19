@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="required commit for workspace.xml">
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="connection.json edited with localhost">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,6 +112,13 @@
       <workItem from="1617763550358" duration="1280000" />
       <workItem from="1617790169782" duration="685000" />
       <workItem from="1617853223103" duration="4471000" />
+      <workItem from="1618118004811" duration="2829000" />
+      <workItem from="1618141226757" duration="25000" />
+      <workItem from="1618141835864" duration="87000" />
+      <workItem from="1618771879636" duration="292000" />
+      <workItem from="1618800187173" duration="165000" />
+      <workItem from="1618800928603" duration="41000" />
+      <workItem from="1618804299341" duration="1189000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
