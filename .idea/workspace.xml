@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+
     <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="search by asset id and serial number implemented">
       <change afterPath="$PROJECT_DIR$/reactjs/src/components/DisplayItem.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reactjs/src/components/InventoryLanding.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reactjs/src/components/InventorySearch.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/reactjs/src/components/InventorySearchSN.js" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reactjs/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" afterDir="false" />
@@ -118,12 +120,14 @@
       <workItem from="1617712519044" duration="5060000" />
       <workItem from="1617763550358" duration="1280000" />
       <workItem from="1617790169782" duration="685000" />
+
       <workItem from="1617853223103" duration="4810000" />
       <workItem from="1617863918183" duration="756000" />
       <workItem from="1617948598204" duration="238000" />
       <workItem from="1617949359171" duration="67000" />
       <workItem from="1618822347028" duration="5521000" />
       <workItem from="1618840966031" duration="641000" />
+
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
