@@ -20,7 +20,20 @@ class InventorySearch extends React.Component{
         equipment:'',
         serialNumber:'',
         location:'',
-        department:''
+        departmentId:'',
+        itemFoundStatus:'',
+        initialSearch:true,
+        departmentName:'',
+        supplierId:'',
+        supplierName:'',
+        model:'',
+        brand:'',
+        purchaseDate:'',
+        poNumber:'',
+        warrantyMonths:'',
+        type:'',
+        wsId:'',
+        ipAddress:''
     }
 
     componentDidMount() {
@@ -39,17 +52,51 @@ class InventorySearch extends React.Component{
     submitSearch = async (event) => {
         event.preventDefault();
         const URL_SEARCHINVENTORY = global.con+"/api/getEquipmentForAssetId/";
+        const URL_DEPARTMENT = global.con+"/api/getDepartmentNameById/";
+        const URL_SUPPLIER = global.con+"/api/getSupplierNameForId/";
         this.setState({assetId: event.target.value});
         await axios.get(URL_SEARCHINVENTORY + this.state.assetId)
             .then(response => response.data)
             .then((data) => {
-                this.setState({equipment: data})
-                this.setState({assetId: data.assetId})
-                this.setState({serialNumber: data.serialNumber})
-                this.setState({location: data.location})
-                this.setState({department: data.department})
+                console.log(data)
+                if (data.serialNumber == null){
+                    this.setState({initialSearch: false})
+                    this.setState({itemFoundStatus: 'notFound'})
+                }
+                else {
+                    this.setState({initialSearch: false})
+                    this.setState({itemFoundStatus: 'found'})
+                    this.setState({equipment: data})
+                    this.setState({assetId: data.assetId})
+                    this.setState({serialNumber: data.serialNumber})
+                    this.setState({location: data.location})
+                    this.setState({departmentId: data.department})
+                    this.setState({supplierId: data.supplier})
+                    this.setState({brand: data.brand})
+                    this.setState({model:data.model})
+                    this.setState({purchaseDate: data.purchaseDate})
+                    this.setState({warrantyMonths: data.warrantyMonths})
+                    this.setState({type: data.type})
+                    this.setState({wsId: data.workStationId})
+                    this.setState({ipAddress: data.ipAddress})
+                    this.setState({poNumber: data.purchaseOrderNumber})
+
+                }
+
                 console.log(this.state.equipment)
 
+            })
+
+            await axios.get(URL_DEPARTMENT + this.state.departmentId)
+                .then(response => response.data)
+                .then( (data) => {
+                    this.setState({departmentName: data})
+                })
+
+        await axios.get(URL_SUPPLIER + this.state.supplierId)
+            .then(response => response.data)
+            .then( (data) => {
+                this.setState({supplierName: data})
             })
     }
     render() {
@@ -57,6 +104,10 @@ class InventorySearch extends React.Component{
         const padding={
             padding:'10px'
         }
+        const padding2={
+            padding:'70px'
+        }
+
         return (
             <div>
                 <div style={padding}>
@@ -105,13 +156,17 @@ class InventorySearch extends React.Component{
                 }*/}
 
                 {
-                    this.state.equipment === '' ?
+                    this.state.initialSearch === true ?
                         <div>
                             Search to get results
                         </div> :
 
-                        this.state.assetId === 0?
-                            <div><h2>No results</h2></div>:
+                        this.state.itemFoundStatus === 'notFound'?
+                            <div style={padding2}>
+                                <center>
+                                    <h2>No Results</h2>
+                                </center>
+                            </div>:
                         <div>
                             <Table striped bordered hover variant='success'  >
                                 <tr>
@@ -130,7 +185,49 @@ class InventorySearch extends React.Component{
 
                                 <tr>
                                     <td>Department</td>
-                                    <td>{this.state.department}</td>
+                                    <td>{this.state.departmentName}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Supplier</td>
+                                    <td>{this.state.supplierName}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Type</td>
+                                    <td>{this.state.type}</td>
+                                </tr>
+                                <tr>
+                                    <td>Brand</td>
+                                    <td>{this.state.brand}</td>
+                                </tr>
+                                <tr>
+                                    <td>Model</td>
+                                    <td>{this.state.model}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Purchase Date</td>
+                                    <td>{this.state.purchaseDate}</td>
+                                </tr>
+                                <tr>
+                                    <td>Warranty Months</td>
+                                    <td>{this.state.warrantyMonths}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Purchase Order Number </td>
+                                    <td>{this.state.poNumber}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Workstation Id</td>
+                                    <td>{this.state.wsId}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>IP Address</td>
+                                    <td>{this.state.ipAddress}</td>
                                 </tr>
                             </Table>
                         </div>
