@@ -15,15 +15,15 @@ class NavigationBar extends React.Component{
 
                 <Nav className="mr-auto">
                     <Link to={"/dashboard-admin"} className='nav-link'>Dashboard</Link>
-                    <Link to={"/inventory"} className='nav-link'>Inventory</Link>
+                    {/*<Link to={"/inventory"} className='nav-link'>Inventory</Link>*/}
 
                         <NavDropdown title="Inventory" id="basic-nav-dropdown">
-                            <Link to={"/inventoryLanding"} className={'dropdown-item'}>Inventory Filters</Link>
+                            <Link to={"/inventoryLanding"} className={'dropdown-item'}>Inventory</Link>
                             <Link to={"/addInventory"} className={'dropdown-item'}>Add Inventory</Link>
                             <Link to={"/inventory"} className={'dropdown-item'}>All Inventory</Link>
-                            <Link to={"/inventory"} className={'dropdown-item'}>Filter by Department</Link>
-                            <Link to={"/inventory"} className={'dropdown-item'}>Filter By Location</Link>
-                            <Link to={"/inventory"} className={'dropdown-item'}>Filter By Supplier</Link>
+                            <Link to={"/inventoryFilter"} className={'dropdown-item'}>Inventory Filters</Link>
+                            <Link to={"/warrantyFilter"} className={'dropdown-item'}>Warranty Info</Link>
+
                         </NavDropdown>
 
                     <Link to={"/maintenance"} className='nav-link'>Maintenance</Link>

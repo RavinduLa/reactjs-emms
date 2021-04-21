@@ -1,8 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import InventorySearch from "./InventorySearch";
-import {Col, Row} from "react-bootstrap";
+import {Col, Row,Jumbotron} from "react-bootstrap";
 import InventorySearchSN from "./InventorySearchSN";
+import DepartmentFilter from "./DepartmentFilter"
 
 class InventoryLanding extends React.Component{
     constructor(props) {
@@ -14,18 +15,41 @@ class InventoryLanding extends React.Component{
     }
 
     render() {
+        const padding={
+            padding:'20px'
+        }
+        const padding2={
+            padding:'10px'
+        }
         return (
             <div>
+                <div style={padding2}>
                 <h1>Inventory</h1>
+
+                <div>
+                    <Jumbotron>
+                        <Row>
+                            <Col>
+                                <Link to={'/addInventory'}>Add Inventory</Link>
+                            </Col>
+                            <Col>
+                                <Link to={'/inventory'}>View Full Inventory</Link>
+                            </Col>
+                            <Col>
+                                <Link to={'/inventoryFilter'}>Filter Inventory</Link>
+                            </Col>
+                        </Row>
+                    </Jumbotron>
+
+                </div>
 
 
                 <Row>
                     <Col><InventorySearch/></Col>
                     <Col><InventorySearchSN/></Col>
                 </Row>
-                <Link>Filter By Department</Link>
-                <Link>Filter By Location</Link>
-                <Link>Filter By Supplier</Link>
+
+                </div>
             </div>
         );
     }

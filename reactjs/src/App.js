@@ -41,6 +41,8 @@ import IpSettings from "./components/IpSettings";
 import connectionData from './connection.json'
 import SupplierList from "./components/SupplierList";
 import InventoryLanding from "./components/InventoryLanding";
+import InventoryFilter from "./components/InventoryFilter";
+import WarrantyFilter from "./components/WarrantyPresentEquipment";
 
 function App() {
 
@@ -117,6 +119,9 @@ function App() {
             <Route path="/addSupplier" exact component={AddSupplier} />
             <Route path="/supplierList" exact component={SupplierList}/>
             <Route path="/inventoryLanding" exact component={InventoryLanding}/>
+            <Route path="/inventoryFilter" exact component={InventoryFilter}/>
+            <Route path="/warrantyFilter" exact component={WarrantyFilter}/>
+            {/*<Route path="/departmentFilter" exact component={DepartmentFilter}/>*/}
         </Switch>
 
         {/*<Container>

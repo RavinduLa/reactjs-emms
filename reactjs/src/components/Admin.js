@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-
+import {Button, Card, Col, Row,Jumbotron} from "react-bootstrap";
 class Admin extends React.Component{
 
     constructor(props) {
@@ -13,11 +13,35 @@ class Admin extends React.Component{
 
 
     render() {
+
+        const padding={
+            padding:'20px'
+        }
         return (
             <div>
-                <Link to={'/equipmentConfiguration'}>Equipment Configurations</Link> <br/>
-                <Link to={'/suppliers'}>Suppliers</Link>  <br/>
-                <Link to={"/departments"} >Departments</Link>
+
+                <div style={padding}>
+                    <Jumbotron>
+                        <Row>
+                            <Col>
+                                <Link className={'btn btn-primary btn-block'} to={'/equipmentConfiguration'}>Equipment Configurations</Link> <br/>
+                            </Col>
+                            <Col>
+                                <Link className={'btn btn-secondary btn-block'} to={'/suppliers'}>Suppliers</Link>  <br/>
+                            </Col>
+                            <Col>
+                                <Link  className={'btn btn-warning btn-block'}to={"/departments"} >Departments</Link>
+                            </Col>
+                        </Row>
+
+
+
+                    </Jumbotron>
+                </div>
+
+
+
+
 
 
                 {/*<Link to={'/addEquipmentCategory'}>Add Categories</Link> <br/>
