@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Implemented a select filter options for filtering inventory items">
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Implemented warranty info functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reactjs/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/AddInventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/WarrantyAbsentEquipment.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/WarrantyAbsentEquipment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/WarrantyFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/WarrantyFilter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/WarrantyPresentEquipment.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/WarrantyPresentEquipment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Welcome.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +130,7 @@
       <workItem from="1618974184508" duration="9294000" />
       <workItem from="1618984889658" duration="3288000" />
       <workItem from="1618990227362" duration="10973000" />
-      <workItem from="1619060610556" duration="4909000" />
+      <workItem from="1619060610556" duration="6324000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
@@ -204,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619063753972</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implemented warranty info functionality">
+      <created>1619065604830</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1619065604830</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +251,7 @@
     <MESSAGE value="Implemented search by asset id and serial number" />
     <MESSAGE value="Implemented inventory filters" />
     <MESSAGE value="Implemented a select filter options for filtering inventory items" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented a select filter options for filtering inventory items" />
+    <MESSAGE value="Implemented warranty info functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented warranty info functionality" />
   </component>
 </project>

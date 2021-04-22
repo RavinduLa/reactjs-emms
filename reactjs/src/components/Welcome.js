@@ -25,6 +25,21 @@ class Welcome extends React.Component{
                     </Col>
                 </Row>
 
+                <Row>
+                    <Col>
+                        <Jumbotron className={'bg-warning'}>
+                            <h4>Inquiries?</h4>
+                            <p>Extention Number</p>
+                        </Jumbotron>
+                    </Col>
+                    <Col>
+                        <Jumbotron className={'bg-secondary text-white'}>
+                            <h4>In IT Function?</h4>
+                            <p><a>Login</a></p>
+                        </Jumbotron>
+                    </Col>
+                </Row>
+
             </Container>
         );
     }

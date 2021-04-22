@@ -16,18 +16,32 @@ class Dashboard extends React.Component{
 
     initialState = {
         assetCount: '',
+        underWarrantyAssetCount:'',
+        noWarrantyAssetCount:''
 
     }
 
 
     componentDidMount() {
         const LOCALHOST_URL = "http://localhost:8080/api/assetCount";
-        const URL_GET_ASSET_COUNT = global.con + "/api/assetCount"
-        axios.get(LOCALHOST_URL)
+        const URL_GET_ASSET_COUNT = global.con + "/api/assetCount";
+        const URL_UNDERWARRANTYASSETS  = global.con+"/api/underWarrantyCount";
+        const URL_NOWARRANTYASSETS  = global.con+"/api/noWarrantyCount";
+        axios.get(URL_GET_ASSET_COUNT)
             .then(response => response.data)
             .then( (data)  => {
                 this.setState( {assetCount: data} );
             } )
+        axios.get(URL_UNDERWARRANTYASSETS)
+            .then(response => response.data)
+            .then( (data) => {
+                this.setState( {underWarrantyAssetCount: data})
+            })
+        axios.get(URL_NOWARRANTYASSETS)
+            .then(response => response.data)
+            .then( (data) => {
+                this.setState( {noWarrantyAssetCount: data})
+            })
 
     }
 
@@ -53,21 +67,25 @@ class Dashboard extends React.Component{
 
 
                     <Col>
+                        <Link to={'/warrantyPresentEquipment'} className={'bg-success text-white'}>
                         <Card>
-                            <Card.Header className={'bg-warning'}>Asset Count</Card.Header>
-                            <Card.Body>
-                                {this.state.assetCount}
+                            <Card.Header className={'bg-success'}>Under Warranty Assets</Card.Header>
+                            <Card.Body className={'text-black-50'}>
+                                {this.state.underWarrantyAssetCount}
                             </Card.Body>
                         </Card>
+                        </Link>
                     </Col>
 
                     <Col>
+                        <Link to={'/warrantyAbsentEquipment'} className={'bg-success text-white'}>
                         <Card>
-                            <Card.Header className={'bg-secondary'}>Asset Count</Card.Header>
-                            <Card.Body>
-                                {this.state.assetCount}
+                            <Card.Header className={'bg-danger text-white'}>Warranty Void Assets</Card.Header>
+                            <Card.Body className={'text-black-50'}>
+                                {this.state.noWarrantyAssetCount}
                             </Card.Body>
                         </Card>
+                        </Link>
                     </Col>
                     <Col>
                         <Card>

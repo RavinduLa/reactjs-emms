@@ -47,6 +47,8 @@ import DepartmentFilter from "./components/DepartmentFilter";
 import SupplierFilter from "./components/SupplierFilter";
 import LocationFilter from "./components/LocationFilter";
 import InventoryFilter2 from "./components/InventoryFilter2";
+import WarrantyPresentEquipment from "./components/WarrantyPresentEquipment";
+import WarrantyAbsentEquipment from "./components/WarrantyAbsentEquipment";
 
 function App() {
 
@@ -129,6 +131,8 @@ function App() {
             <Route path="/locationFilter" exact component={LocationFilter}/>
             <Route path="/supplierFilter" exact component={SupplierFilter}/>
             <Route path="/inventoryFilter2" exact component={InventoryFilter2}/>
+            <Route path="/warrantyPresentEquipment" exact component={WarrantyPresentEquipment}/>
+            <Route path="/warrantyAbsentEquipment" exact component={WarrantyAbsentEquipment}/>
 
             {/*<Route path="/departmentFilter" exact component={DepartmentFilter}/>*/}
         </Switch>
