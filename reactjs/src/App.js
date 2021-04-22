@@ -42,7 +42,7 @@ import connectionData from './connection.json'
 import SupplierList from "./components/SupplierList";
 import InventoryLanding from "./components/InventoryLanding";
 import InventoryFilter from "./components/InventoryFilter";
-import WarrantyFilter from "./components/WarrantyPresentEquipment";
+import WarrantyFilter from "./components/WarrantyFilter";
 import DepartmentFilter from "./components/DepartmentFilter";
 import SupplierFilter from "./components/SupplierFilter";
 import LocationFilter from "./components/LocationFilter";

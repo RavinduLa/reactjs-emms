@@ -23,14 +23,18 @@ class WarrantyFilter extends React.Component{
     }
 
     render() {
+        const padding={
+            padding:'10px'
+        }
         return (
             <div>
 
+                <div style={padding}>
                 <Row>
-                    <Col><p>adfmafd</p></Col>
                     <Col> <WarrantyPresentEquipment /> </Col>
                     <Col> <WarrantyAbsentEquipment /> </Col>
                 </Row>
+                </div>
 
             </div>
         );

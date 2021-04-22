@@ -40,7 +40,7 @@ class WarrantyPresentEquipment extends React.Component{
             <div>
 
                 <h3>Equipment Under Warranty</h3>
-                <Table striped bordered hover variant='light'>
+                <Table striped bordered hover variant='success'>
                     <thead>
                     <tr>
                         <td>Asset Id</td>
@@ -59,7 +59,7 @@ class WarrantyPresentEquipment extends React.Component{
                                     <td>{e.serialNumber}</td>
 
                                     <td>
-                                        <Button className={'btn btn-warning'} onClick={this.alertItem.bind(this,e)}>
+                                        <Button className={'btn btn-success'} onClick={this.alertItem.bind(this,e)}>
                                             View More Info
                                         </Button>
                                     </td>

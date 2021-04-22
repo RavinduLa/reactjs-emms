@@ -694,7 +694,7 @@ class AddInventory extends React.Component{
                                         required
                                         type="number"
                                         name={'warrantyMonths'}
-                                        placeholder="Enter number of warranty months"
+                                        placeholder="Warranty Period"
                                         value={warrantyMonths}
                                         onChange={this.equipmentChange}
                                     />
@@ -706,7 +706,7 @@ class AddInventory extends React.Component{
                                             required
                                             type="number"
                                             name={'purchaseOrderNumber'}
-                                            placeholder="Enter the purchase order number"
+                                            placeholder="Purchase Order number"
 
                                             value={this.state.purchaseOrderNumber}
 
@@ -738,16 +738,14 @@ class AddInventory extends React.Component{
 
 
 
-                                </Form.Row>
 
-                                <Form.Row>
                                     <Form.Group controlId={"formIpAddress"} as={Col}>
                                         <Form.Label>IP address</Form.Label>
                                         <Form.Control
                                             required
                                             type="text"
                                             name={'ipAddress'}
-                                            placeholder="Enter the purchase order number"
+                                            placeholder="ip address (if applicable)"
                                             value={this.state.ipAddress}
                                             onChange={this.equipmentChange}
                                         />
@@ -759,7 +757,7 @@ class AddInventory extends React.Component{
                                             required
                                             type="text"
                                             name={'workStationId'}
-                                            placeholder="Enter the workstation id"
+                                            placeholder="Workstation id"
                                             value={this.state.workStationId}
                                             onChange={this.equipmentChange}
                                         />

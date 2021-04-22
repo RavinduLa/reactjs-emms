@@ -57,7 +57,7 @@ class WarrantyAbsentEquipment extends React.Component{
                                     <td>{e.serialNumber}</td>
 
                                     <td>
-                                        <Button className={'btn btn-warning'} onClick={this.alertItem.bind(this,e)}>
+                                        <Button className={'btn btn-danger'} onClick={this.alertItem.bind(this,e)}>
                                             View More Info
                                         </Button>
                                     </td>
