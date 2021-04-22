@@ -110,7 +110,7 @@ class EquipmentCategoryList extends React.Component{
                 {/*<Button onClick={this.loadCategories}>Load Categories</Button>*/}
 
 
-                <Table striped bordered hover variant='light'>
+                <Table className={'table-sm'} striped bordered hover variant='light'>
 
                     <thead>
                         <tr>
@@ -130,7 +130,7 @@ class EquipmentCategoryList extends React.Component{
                                 <td>
                                     <Button
                                         onClick={this.handleDelete.bind(this,c.categoryId)}
-                                        className={'btn btn-danger'}>
+                                        className={'btn btn-danger btn-sm'}>
                                         Delete
                                     </Button>
                                 </td>

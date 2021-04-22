@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Changed Supplier link in admin to supplier link">
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/NavigationBar.js" afterDir="false" />
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Adjusted navbar inventory filter link to call Selective filtering page(inventoryFilter2)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/BrandList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/BrandList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/CategoryBrandsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/CategoryBrandsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/DepartmentFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/DepartmentFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/EquipmentCategoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/EquipmentCategoryList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/InventoryFilter2.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/InventoryFilter2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/InventoryLanding.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/InventoryLanding.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/InventoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/InventoryList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/InventorySearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/InventorySearch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/InventorySearchSN.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/InventorySearchSN.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/LocationFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/LocationFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/ModelList.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/ModelList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/SupplierFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/SupplierFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/WarrantyAbsentEquipment.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/WarrantyAbsentEquipment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/WarrantyPresentEquipment.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/WarrantyPresentEquipment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +141,8 @@
       <workItem from="1618974184508" duration="9294000" />
       <workItem from="1618984889658" duration="3288000" />
       <workItem from="1618990227362" duration="10973000" />
-      <workItem from="1619060610556" duration="7048000" />
+      <workItem from="1619060610556" duration="13114000" />
+      <workItem from="1619078766076" duration="1051000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
@@ -220,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619067591028</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Adjusted navbar inventory filter link to call Selective filtering page(inventoryFilter2)">
+      <created>1619067845616</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1619067845616</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +287,7 @@
     <MESSAGE value="Implemented warranty info functionality" />
     <MESSAGE value="Edited the dashboard" />
     <MESSAGE value="Changed Supplier link in admin to supplier link" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Supplier link in admin to supplier link" />
+    <MESSAGE value="Adjusted navbar inventory filter link to call Selective filtering page(inventoryFilter2)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjusted navbar inventory filter link to call Selective filtering page(inventoryFilter2)" />
   </component>
 </project>

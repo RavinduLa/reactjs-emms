@@ -87,7 +87,7 @@ class BrandList extends React.Component{
                 </div>
 
                 <Link to={'/addBrand'}>Add new brand</Link>
-                <Table striped bordered hover variant='light'>
+                <Table className={'table-sm'} striped bordered hover variant='light'>
                     <thead>
                         <tr>
                             <th>Brand Id</th>
@@ -108,7 +108,7 @@ class BrandList extends React.Component{
                                     <td>
                                         <Button
                                             onClick={this.handleDeletion.bind(this,e.brandId)}
-                                            className={'btn btn-danger'}>Delete</Button>
+                                            className={'btn btn-danger btn-sm'}>Delete</Button>
                                     </td>
                                 </tr>
 

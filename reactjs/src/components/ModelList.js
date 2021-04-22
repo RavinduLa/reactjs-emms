@@ -87,7 +87,7 @@ class ModelList extends React.Component{
 
                 <Link to={'/addModels'}>Register Models</Link>
 
-                <Table striped bordered hover variant='light'>
+                <Table className={'table-sm'} striped bordered hover variant='light'>
                     <thead>
                         <tr>
                             <th>Model Id</th>
@@ -108,7 +108,7 @@ class ModelList extends React.Component{
                                     <td>{e.brand}</td>
 
                                     <td>
-                                        <Button className={'btn btn-danger'} onClick={this.handleDelete.bind(this,e.modelId)}>
+                                        <Button className={'btn btn-danger btn-sm'} onClick={this.handleDelete.bind(this,e.modelId)}>
                                             Delete
                                         </Button>
                                     </td>

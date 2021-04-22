@@ -67,7 +67,7 @@ class CategoryBrandsList extends React.Component{
                             type: 'danger'}}/>
                 </div>
 
-                <Table striped bordered hover variant='light'>
+                <Table className={'table-sm'} striped bordered hover variant='light'>
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -89,7 +89,7 @@ class CategoryBrandsList extends React.Component{
                                     <td>{e.brand}</td>
 
                                     <td>
-                                        <Button className={'btn btn-danger'} onClick={this.deleteCombo.bind(this,e.id)}>
+                                        <Button className={'btn btn-danger btn-sm'} onClick={this.deleteCombo.bind(this,e.id)}>
                                             Delete
                                         </Button>
                                     </td>

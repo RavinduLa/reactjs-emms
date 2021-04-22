@@ -103,19 +103,25 @@ class DepartmentFilter extends React.Component{
     render() {
         const {departmentId,departmentName}  = this.state;
         const padding={
-            padding:'10px'
+            padding:'2px',
+        }
+
+        const paddingLeft={
+            paddingLeft: '10px'
         }
 
         //console.log("In render: "+this.state.deptList)
         return (
             <div>
                 <div style={padding}>
-                    <Card>
+                    <Card >
                         <Card.Body>
+
                 <Form onReset={this.resetDepartmentFilter.bind(this)} onSubmit={this.submitDepartmentFilter.bind(this)}>
-                    <Form.Row>
-                        <Form.Group controlId={"formDepartmentFilter"} as={Col}>
-                            <Form.Label>Filter by department</Form.Label>
+
+                        <Form.Group as={Row} controlId={"formDepartmentFilter"} >
+                                <Form.Label column sm="2">Filter by department</Form.Label>
+                            <Col sm="7">
                             <Form.Control
                                  as={"select"} required name={'department'}
                                  defaultValue={"defIt"}
@@ -134,25 +140,21 @@ class DepartmentFilter extends React.Component{
                                 }
 
                             </Form.Control>
-                        </Form.Group>
+                            </Col>
+                            <Col sm={'1'}>
+                                <Button type={'submit'}  className={'btn btn-primary btn-sm'}>
+                                    Filter
+                                </Button>
+                            </Col>
+
+                            <Col sm={'2'}>
+                                <Button type={'reset'}  className={'btn btn-secondary btn-sm'}>
+                                    Reset
+                                </Button>
+                            </Col>
+                            </Form.Group>
 
 
-                    </Form.Row>
-                    <Row>
-                        <Col>
-                            <Button type={'submit'}  className={'btn btn-primary'}>
-                                Filter
-                            </Button>
-                        </Col>
-
-                        <Col>
-                            <Button type={'reset'}  className={'btn btn-secondary'}>
-                                Reset
-                            </Button>
-                        </Col>
-
-
-                    </Row>
                 </Form>
 
                         </Card.Body>
@@ -163,7 +165,7 @@ class DepartmentFilter extends React.Component{
                             <div><p>Filter to get results</p></div>
                             :
 
-                            <Table striped bordered hover variant='light'>
+                            <Table className={'table-sm'} striped bordered hover variant='light'>
                                 <thead>
                                 <tr>
                                     <td>Asset Id</td>
@@ -179,7 +181,7 @@ class DepartmentFilter extends React.Component{
                                                 <td>{e.assetId}</td>
                                                 <td>{e.serialNumber}</td>
                                                 <td>
-                                                    <Button className={'btn btn-warning'} onClick={this.alertItem.bind(this,e)}>
+                                                    <Button className={'btn btn-warning btn-sm'} onClick={this.alertItem.bind(this,e)}>
                                                         View More Info
                                                     </Button>
                                                 </td>

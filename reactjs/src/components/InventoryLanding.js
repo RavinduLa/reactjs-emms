@@ -24,10 +24,10 @@ class InventoryLanding extends React.Component{
         return (
             <div>
                 <div style={padding2}>
-                <h1>Inventory</h1>
+
 
                 <div>
-                    <Jumbotron>
+
                         <Row>
                             <Col>
                                 <Link to={'/addInventory'}>Add Inventory</Link>
@@ -51,7 +51,7 @@ class InventoryLanding extends React.Component{
                                 <Link to={'/supplierFilter'}>Filter By Supplier</Link>
                             </Col>
                         </Row>
-                    </Jumbotron>
+
 
                 </div>
 

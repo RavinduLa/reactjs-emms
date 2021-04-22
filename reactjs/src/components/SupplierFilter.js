@@ -98,10 +98,10 @@ class SupplierFilter extends React.Component{
                     <Card>
                         <Card.Body>
                             <Form onReset={this.resetSupplierFilter.bind(this)} onSubmit={this.submitSupplierFiler.bind(this)}>
-                                <Form.Row>
-                                    <Form.Group controlId={'formSupplierFilter'}>
-                                        <Form.Label>Filter by Supplier</Form.Label>
+                                    <Form.Group as={Row} controlId={'formSupplierFilter'}>
+                                        <Form.Label column sm="2">Filter by Supplier</Form.Label>
 
+                                        <Col sm="7">
                                         <Form.Control
                                         as={"select"} required name={'supplier'}
                                         defaultValue={'defSup'}
@@ -120,20 +120,20 @@ class SupplierFilter extends React.Component{
 
                                         </Form.Control>
 
+                                        </Col>
+
+                                        <Col sm={'1'}>
+                                            <Button type={'submit'}  className={'btn btn-primary btn-sm'}>
+                                                Filter
+                                            </Button>
+                                        </Col>
+                                        <Col sm={'2'}>
+                                            <Button type={'reset'}  className={'btn btn-secondary btn-sm'}>
+                                                Reset
+                                            </Button>
+                                        </Col>
+
                                     </Form.Group>
-                                </Form.Row>
-                                <Row>
-                                    <Col>
-                                        <Button type={'submit'}  className={'btn btn-primary'}>
-                                            Filter
-                                        </Button>
-                                    </Col>
-                                    <Col>
-                                        <Button type={'reset'}  className={'btn btn-secondary'}>
-                                            Reset
-                                        </Button>
-                                    </Col>
-                                </Row>
 
                             </Form>
                         </Card.Body>
@@ -142,7 +142,7 @@ class SupplierFilter extends React.Component{
                     {
                         this.state.filterInitiated === false?
                             <div><p>Filter to get results</p></div>:
-                            <Table striped bordered hover variant='light'>
+                            <Table className={'table-sm'} striped bordered hover variant='light'>
                                 <thead>
                                 <tr>
                                     <td>Asset Id</td>
@@ -159,7 +159,7 @@ class SupplierFilter extends React.Component{
                                                 <td>{e.assetId}</td>
                                                 <td>{e.serialNumber}</td>
                                                 <td>
-                                                    <Button className={'btn btn-warning'} onClick={this.alertItem.bind(this,e)}>
+                                                    <Button className={'btn btn-warning btn-sm'} onClick={this.alertItem.bind(this,e)}>
                                                         View More Info
                                                     </Button>
                                                 </td>

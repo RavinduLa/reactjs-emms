@@ -72,9 +72,9 @@ class LocationFilter extends React.Component{
                     <Card>
                         <Card.Body>
                     <Form onReset={this.resetLocation.bind(this)} onSubmit={this.submitLocation.bind(this)} id={'filterLocationForm'}>
-                        <Form.Row>
-                            <Form.Group controlId={"formDepartmentFilter"} as={Col}>
-                                <Form.Label>Filter by Location</Form.Label>
+                            <Form.Group controlId={"formDepartmentFilter"} as={Row}>
+                                <Form.Label column sm={'2'}>Filter by Location</Form.Label>
+                                <Col sm={'7'}>
                                 <Form.Control required
                                     type="text"
                                     name={"location"}
@@ -83,23 +83,23 @@ class LocationFilter extends React.Component{
 
                                 onChange={this.changeSearch}
                                 />
+                                </Col>
+
+                                <Col sm={'1'}>
+                                    <Button type={'submit'} onSubmit={this.submitLocation.bind(this)} className={'btn btn-primary btn-sm'}>
+                                        Filter
+                                    </Button>
+                                </Col>
+                                <Col sm={'2'}>
+                                    <Button type={'reset'} onReset={this.resetLocation.bind(this)} className={'btn btn-secondary btn-sm'}>
+                                        Reset
+                                    </Button>
+                                </Col>
 
 
                             </Form.Group>
-                        </Form.Row>
 
-                        <Row>
-                            <Col>
-                                <Button type={'submit'} onSubmit={this.submitLocation.bind(this)} className={'btn btn-primary'}>
-                                    Filter
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button type={'reset'} onReset={this.resetLocation.bind(this)} className={'btn btn-secondary'}>
-                                    Reset
-                                </Button>
-                            </Col>
-                        </Row>
+
 
                     </Form>
 
@@ -109,7 +109,7 @@ class LocationFilter extends React.Component{
                     {
                         this.state.initialSearch === true?
                             <div>Enter location to filter</div>:
-                            <Table striped bordered hover variant='light'>
+                            <Table className={'table-sm'} striped bordered hover variant='light'>
                                 <thead>
                                 <tr>
                                     <td>Asset Id</td>
@@ -126,7 +126,7 @@ class LocationFilter extends React.Component{
                                             <td>{e.assetId}</td>
                                             <td>{e.serialNumber}</td>
                                             <td>
-                                                <Button className={'btn btn-warning'} onClick={this.alertItem.bind(this,e)}>
+                                                <Button className={'btn btn-warning btn-sm'} onClick={this.alertItem.bind(this,e)}>
                                                     View More Info
                                                 </Button>
                                             </td>

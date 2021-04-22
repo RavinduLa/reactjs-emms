@@ -220,7 +220,7 @@ class InventoryList extends React.Component{
                                 message:"Equipment deleted successfully",
                                 type: 'danger'}}/>
                     </div>
-                <Table striped bordered hover variant='light'>
+                <Table className={'table-sm'}striped bordered hover  variant='light' >
 
                     <thead>
                     <tr>
@@ -308,7 +308,7 @@ class InventoryList extends React.Component{
                                             <Button
                                                 //onClick={this.deleteItem.bind(this,e.assetId)}
                                                 onClick={this.handleDelete.bind(this,e.assetId)}
-                                                className={'btn btn-danger'}>Delete</Button>
+                                                className={'btn btn-danger btn-sm'}>Delete</Button>
                                         </td>
 
                                     </tr>

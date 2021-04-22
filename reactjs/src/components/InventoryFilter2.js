@@ -40,28 +40,35 @@ class InventoryFilter2 extends React.Component{
         const padding={
             padding:'10px'
         }
+        const paddingLeft={
+            paddingLeft: '10px'
+        }
         return (
             <div>
-                <div style={padding}>
+                <div style={paddingLeft,padding}>
                     <Row>
                         <Col>
                     <Form onReset={this.resetInventoryFilter.bind(this)} onSubmit={this.submitFilter.bind(this)}>
+                            <Form.Group as={Row}>
+                                <Form.Label column sm="1">Filter By</Form.Label>
 
-                        <Form.Row>
-                            <Form.Group>
-                                <Form.Label><h4>Filter By</h4></Form.Label>
-                                <Form.Control
-                                as={"select"} required name={'selectFIlterOption'}
-                                value={this.state.filterOption}
-                                onChange={this.changeSelection.bind(this)}>
+                                <Col sm="7">
 
-                                    <option value={'department'}>Department</option>
-                                    <option value={'location'}>Location</option>
-                                    <option value={'supplier'}>Supplier</option>
+                                    <Form.Control
+                                        as={"select"} required name={'selectFIlterOption'}
+                                        value={this.state.filterOption}
+                                        onChange={this.changeSelection.bind(this)}>
 
-                                </Form.Control>
+                                        <option value={'department'}>Department</option>
+                                        <option value={'location'}>Location</option>
+                                        <option value={'supplier'}>Supplier</option>
+
+                                    </Form.Control>
+
+                                </Col>
+
+
                             </Form.Group>
-                        </Form.Row>
 
 
                     </Form>

@@ -39,8 +39,8 @@ class WarrantyPresentEquipment extends React.Component{
         return (
             <div>
 
-                <h3>Equipment Under Warranty</h3>
-                <Table striped bordered hover variant='success'>
+                <h6>Equipment Under Warranty</h6>
+                <Table className={'table-sm'} striped bordered hover variant='success'>
                     <thead>
                     <tr>
                         <td>Asset Id</td>
@@ -59,7 +59,7 @@ class WarrantyPresentEquipment extends React.Component{
                                     <td>{e.serialNumber}</td>
 
                                     <td>
-                                        <Button className={'btn btn-success'} onClick={this.alertItem.bind(this,e)}>
+                                        <Button className={'btn btn-success btn-sm'} onClick={this.alertItem.bind(this,e)}>
                                             View More Info
                                         </Button>
                                     </td>

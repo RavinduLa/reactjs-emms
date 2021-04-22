@@ -115,9 +115,9 @@ class InventorySearch extends React.Component{
                 <Form onReset={this.resetSearch.bind(this) } onSubmit={this.submitSearch.bind(this)} id={'searchInventoryForm'}>
                     <Card>
                     <Card.Body>
-                        <Form.Row>
-                            <Form.Group controlId={'formAssetId'} as={Col}>
-                                <Form.Label>Search by Asset Id</Form.Label>
+                            <Form.Group controlId={'formAssetId'} as={Row}>
+                                <Form.Label column sm="5">Search by Asset Id</Form.Label>
+                                <Col sm="3">
                                 <Form.Control required
                                               type="number"
                                               name={'assetId'}
@@ -127,23 +127,19 @@ class InventorySearch extends React.Component{
 
                                               onChange={this.changeSearch}
                                 />
+                                </Col>
+
+                                <Col sm={'2'}>
+                                    <Button type={'submit'} onSubmit={this.submitSearch.bind(this)} className={'btn btn-primary btn-sm'}>Search</Button>
+                                </Col>
+                                <Col sm={'1'}>
+                                    <Button type={'reset'} onReset={this.resetSearch.bind(this)} className={'btn btn-secondary btn-sm'}>Reset</Button>
+                                </Col>
                             </Form.Group>
 
 
-                        </Form.Row>
-                        <Row>
-                        <Col>
-                            <Button type={'submit'} onSubmit={this.submitSearch.bind(this)} className={'btn btn-primary'}>Search</Button>
-                        </Col>
-                        <Col>
-                            <Button type={'reset'} onReset={this.resetSearch.bind(this)} className={'btn btn-secondary'}>Reset</Button>
-                        </Col>
 
-                        </Row>
 
-                        <Form.Row>
-
-                        </Form.Row>
                     </Card.Body>
                     </Card>
                 </Form>
@@ -168,68 +164,85 @@ class InventorySearch extends React.Component{
                                 </center>
                             </div>:
                         <div>
-                            <Table striped bordered hover variant='success'  >
-                                <tr>
-                                    <td>Asset Id</td>
-                                    <td>{this.state.assetId}</td>
-                                </tr>
-                                <tr>
-                                    <td>Serial Number</td>
-                                    <td>{this.state.serialNumber}</td>
-                                </tr>
+                            <Row>
+                                <Col>
+                                    <Table className={'table-sm'} striped bordered hover variant='success'>
+                                        <tr>
+                                            <td>Asset Id</td>
+                                            <td>{this.state.assetId}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Serial Number</td>
+                                            <td>{this.state.serialNumber}</td>
+                                        </tr>
 
-                                <tr>
-                                    <td>Location</td>
-                                    <td>{this.state.location}</td>
-                                </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td>{this.state.location}</td>
+                                        </tr>
 
-                                <tr>
-                                    <td>Department</td>
-                                    <td>{this.state.departmentName}</td>
-                                </tr>
+                                        <tr>
+                                            <td>Department</td>
+                                            <td>{this.state.departmentName}</td>
+                                        </tr>
 
-                                <tr>
-                                    <td>Supplier</td>
-                                    <td>{this.state.supplierName}</td>
-                                </tr>
+                                        <tr>
+                                            <td>Supplier</td>
+                                            <td>{this.state.supplierName}</td>
+                                        </tr>
 
-                                <tr>
-                                    <td>Type</td>
-                                    <td>{this.state.type}</td>
-                                </tr>
-                                <tr>
-                                    <td>Brand</td>
-                                    <td>{this.state.brand}</td>
-                                </tr>
-                                <tr>
-                                    <td>Model</td>
-                                    <td>{this.state.model}</td>
-                                </tr>
+                                        <tr>
+                                            <td>Type</td>
+                                            <td>{this.state.type}</td>
+                                        </tr>
 
-                                <tr>
-                                    <td>Purchase Date</td>
-                                    <td>{this.state.purchaseDate}</td>
-                                </tr>
-                                <tr>
-                                    <td>Warranty Months</td>
-                                    <td>{this.state.warrantyMonths}</td>
-                                </tr>
+                                    </Table>
+                                </Col>
 
-                                <tr>
-                                    <td>Purchase Order Number </td>
-                                    <td>{this.state.poNumber}</td>
-                                </tr>
+                                <Col>
 
-                                <tr>
-                                    <td>Workstation Id</td>
-                                    <td>{this.state.wsId}</td>
-                                </tr>
+                                    <Table className={'table-sm'} striped bordered hover variant='success'>
+                                        <tr>
+                                            <td>Brand</td>
+                                            <td>{this.state.brand}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Model</td>
+                                            <td>{this.state.model}</td>
+                                        </tr>
 
-                                <tr>
-                                    <td>IP Address</td>
-                                    <td>{this.state.ipAddress}</td>
-                                </tr>
-                            </Table>
+                                        <tr>
+                                            <td>Purchase Date</td>
+                                            <td>{this.state.purchaseDate}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Warranty Months</td>
+                                            <td>{this.state.warrantyMonths}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>PO Number </td>
+                                            <td>{this.state.poNumber}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Workstation Id</td>
+                                            <td>{this.state.wsId}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>IP Address</td>
+                                            <td>{this.state.ipAddress}</td>
+                                        </tr>
+                                    </Table>
+
+                                </Col>
+
+
+
+
+                            </Row>
+
                         </div>
                 }
 
