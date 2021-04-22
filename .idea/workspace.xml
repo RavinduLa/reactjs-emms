@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Edited the dashboard">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Suppliers.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Suppliers.js" afterDir="false" />
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Changed Supplier link in admin to supplier link">
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/NavigationBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +127,7 @@
       <workItem from="1618974184508" duration="9294000" />
       <workItem from="1618984889658" duration="3288000" />
       <workItem from="1618990227362" duration="10973000" />
-      <workItem from="1619060610556" duration="6845000" />
+      <workItem from="1619060610556" duration="7048000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
@@ -216,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619067022686</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Changed Supplier link in admin to supplier link">
+      <created>1619067591028</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1619067591028</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +264,7 @@
     <MESSAGE value="Implemented a select filter options for filtering inventory items" />
     <MESSAGE value="Implemented warranty info functionality" />
     <MESSAGE value="Edited the dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited the dashboard" />
+    <MESSAGE value="Changed Supplier link in admin to supplier link" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Supplier link in admin to supplier link" />
   </component>
 </project>

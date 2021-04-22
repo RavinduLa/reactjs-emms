@@ -21,7 +21,7 @@ class NavigationBar extends React.Component{
                             <Link to={"/inventoryLanding"} className={'dropdown-item'}>Inventory</Link>
                             <Link to={"/addInventory"} className={'dropdown-item'}>Add Inventory</Link>
                             <Link to={"/inventory"} className={'dropdown-item'}>All Inventory</Link>
-                            <Link to={"/inventoryFilter"} className={'dropdown-item'}>Inventory Filters</Link>
+                            <Link to={"/inventoryFilter2"} className={'dropdown-item'}>Inventory Filters</Link>
                             <Link to={"/warrantyFilter"} className={'dropdown-item'}>Warranty Info</Link>
 
                         </NavDropdown>
