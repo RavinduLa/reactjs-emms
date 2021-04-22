@@ -27,7 +27,7 @@ class Admin extends React.Component{
                                 <Link className={'btn btn-primary btn-block'} to={'/equipmentConfiguration'}>Equipment Configurations</Link> <br/>
                             </Col>
                             <Col>
-                                <Link className={'btn btn-secondary btn-block'} to={'/suppliers'}>Suppliers</Link>  <br/>
+                                <Link className={'btn btn-secondary btn-block'} to={'/supplierList'}>Suppliers</Link>  <br/>
                             </Col>
                             <Col>
                                 <Link  className={'btn btn-warning btn-block'}to={"/departments"} >Departments</Link>

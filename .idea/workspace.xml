@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Implemented warranty info functionality">
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Edited the dashboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reactjs/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Welcome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Suppliers.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Suppliers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +130,7 @@
       <workItem from="1618974184508" duration="9294000" />
       <workItem from="1618984889658" duration="3288000" />
       <workItem from="1618990227362" duration="10973000" />
-      <workItem from="1619060610556" duration="6324000" />
+      <workItem from="1619060610556" duration="6845000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
@@ -209,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619065604830</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Edited the dashboard">
+      <created>1619067022686</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1619067022686</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +259,7 @@
     <MESSAGE value="Implemented inventory filters" />
     <MESSAGE value="Implemented a select filter options for filtering inventory items" />
     <MESSAGE value="Implemented warranty info functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented warranty info functionality" />
+    <MESSAGE value="Edited the dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited the dashboard" />
   </component>
 </project>
