@@ -8,13 +8,13 @@ class Inventory extends React.Component{
     render() {
 
         const padding={
-            padding:'20px'
+            padding:'5px'
         }
             return(
                <Container fluid>
                    <Row style={padding}>
                        <Col xs={10}>
-                           <h2>Inventory List</h2>
+                           <h5>Inventory List</h5>
                        </Col>
                        <Col xs={2}>
                            <Link to={"addInventory"}> Add Inventory  </Link>

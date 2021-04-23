@@ -3,6 +3,8 @@ import axios from "axios";
 import {Card, Col, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
+import AssetCountDepartment from "./AssetCountDepartment";
+
 class Dashboard extends React.Component{
 
     constructor(props) {
@@ -55,14 +57,16 @@ class Dashboard extends React.Component{
                 <Row>
 
                     <Col>
-                        <Link to={'/inventory'} className={'bg-info text-white'}>
+                        <Link to={'/inventory'} className={'bg-info text-white'}></Link>
                         <Card >
                             <Card.Header className={'bg-info'}>Asset Count</Card.Header>
                             <Card.Body className={'text-black-50'}>
                                 {this.state.assetCount}
                             </Card.Body>
                         </Card>
-                        </Link>
+
+                        <AssetCountDepartment />
+
                     </Col>
 
 
