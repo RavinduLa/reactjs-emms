@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Adjusted some UIs to be compact">
-      <change afterPath="$PROJECT_DIR$/reactjs/src/components/AssetCountDepartment.js" afterDir="false" />
+    <list default="true" id="17c78539-5ae5-4ff4-b5db-e02fa5f5ce25" name="Default Changelist" comment="Implemented departmentwise asset count">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reactjs/src/components/Inventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/Inventory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reactjs/src/components/AssetCountDepartment.js" beforeDir="false" afterPath="$PROJECT_DIR$/reactjs/src/components/AssetCountDepartment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +142,12 @@
       <workItem from="1619152071956" duration="2754000" />
       <workItem from="1619155244374" duration="5323000" />
       <workItem from="1619164950130" duration="10317000" />
-      <workItem from="1619176492548" duration="1065000" />
+      <workItem from="1619176492548" duration="1570000" />
+      <workItem from="1619193878735" duration="547000" />
+      <workItem from="1619203674718" duration="76000" />
+      <workItem from="1619325919260" duration="197000" />
+      <workItem from="1619494083571" duration="4108000" />
+      <workItem from="1619502681028" duration="2472000" />
     </task>
     <task id="LOCAL-00001" summary="Edited the department selection in adding inventory">
       <created>1617602737021</created>
@@ -251,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619079837443</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Implemented departmentwise asset count">
+      <created>1619177601375</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1619177601375</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,6 +308,7 @@
     <MESSAGE value="Changed Supplier link in admin to supplier link" />
     <MESSAGE value="Adjusted navbar inventory filter link to call Selective filtering page(inventoryFilter2)" />
     <MESSAGE value="Adjusted some UIs to be compact" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted some UIs to be compact" />
+    <MESSAGE value="Implemented departmentwise asset count" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented departmentwise asset count" />
   </component>
 </project>

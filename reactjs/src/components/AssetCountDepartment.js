@@ -10,8 +10,9 @@ class AssetCountDepartment extends React.Component{
 
         this.changeDept = this.changeDept.bind(this);
         this.resetDeptAssetCount = this.resetDeptAssetCount.bind(this);
-        //this.alertDepartmentAssets = this.alertDepartmentAssets.bind(this);
+        this.alertDepartmentAssets = this.alertDepartmentAssets.bind(this);
         this.writeOutput = this.writeOutput.bind(this);
+
         //this.submitDepartmentSelection = this.submitDepartmentSelection.bind(this);
 
     }
@@ -33,10 +34,14 @@ class AssetCountDepartment extends React.Component{
         const URL_GETEQUIPMENTCOUNT = global.con+"/api/getDepartmentAssetCount/";
         const URL_GET_ALL_TYPES = global.con+"/api/allCategories/";
 
+        console.log("Asset count department component mounted")
+
         await axios.get(URL_GET_ALL_TYPES)
             .then(response => response.data)
             .then((data) => {
                 this.setState({typeList: data})
+            }).catch(error => {
+                alert("Cannot get type list. Backend server might be down.\n"+error)
             })
 
         await axios.get(URL_DEPARTMENTS)
@@ -109,30 +114,51 @@ class AssetCountDepartment extends React.Component{
         const URL_GET_TYPES = global.con+"/api/getTypeDeptAssetCount/"
 
         let typeAssetCountMap = new Map;
-
-        this.state.typeList.map( async (e) => (
-            await axios.get(URL_GET_TYPES+did+"/"+e.categoryName)
-                .then(response => response.data)
-                .then((data) => {
-                    //alert("Category "+e.categoryName +" : "+data)
-                    typeAssetCountMap.set(e.categoryName,data)
-                    this.setState({typeAssetCount: typeAssetCountMap})
-                    //console.log(+this.state.typeAssetCount.get('CPU'))
-                })
-        ))
         let outputM = '';
-        console.log("Write output running")
-        await this.state.typeList.map(  (e) => {
+        this.setState({output: ''});
+
+        await Promise.all(
+            this.state.typeList.map( async (e) => (
+                await axios.get(URL_GET_TYPES+did+"/"+e.categoryName)
+                    .then(response => response.data)
+                    .then( async (data) => {
+                        //alert("Category "+e.categoryName +" : "+data)
+                        await typeAssetCountMap.set(e.categoryName,data)
+                        await this.setState({typeAssetCount: typeAssetCountMap})
+
+                    })
+                    .then( async () => {
+                        outputM = outputM + e.categoryName + " : "+ await this.state.typeAssetCount.get(e.categoryName)+"\n";
+                    })
+                    .then( async () => {
+                         await this.setState({output:outputM})
+                    })
+                    .catch(error => {
+                        console.log("Error in alerting: "+error);
+                    })
+            ))
+        ).then( () => {
+            alert(this.state.output);
+        })
+            .then( () => {
+                this.setState({output:''});
+            })
+
+
+
+
+        /*console.log("Write output running")
+        await this.state.typeList.map(   (e) => { //here should be brackets
             //outputM.concat(outputM,e.categoryName,' : ',this.state.typeAssetCount.get(e.categoryName),'\n')
             outputM = outputM + e.categoryName + " : "+ this.state.typeAssetCount.get(e.categoryName)+"\n";
-            //console.log("outputM : "+outputM)
-             this.setState({output: outputM})
+            console.log("outputM : "+outputM)
+
         })
 
-        //console.log(this.state.output);
-        alert(this.state.output);
+        this.setState({output:outputM})
+        alert(this.state.output);*/
 
-        //this.writeOutput.bind(this);
+
 
     }
     writeOutput = async (event) => {
@@ -193,7 +219,7 @@ class AssetCountDepartment extends React.Component{
 
                             this.state.deptList.map(  (e) => (
 
-                                <tr>
+                                <tr key={e.did}>
                                     <td>{e.departmentName}</td>
                                     <td>{this.state.departmentAssetCount.get(e.did)}</td>
                                     {/*<td>{this.state.typeAssetCount.get('CPU')}</td>*/}
